@@ -20,7 +20,7 @@ collections:
       - {label: "Tags", name: "tags", widget: "list"}
 
   - name: "trips"
-    label: "Trips"
+    label: "Trip"
     folder: "src/pages/trips"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
