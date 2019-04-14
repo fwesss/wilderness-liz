@@ -1,7 +1,7 @@
 ---
 templateKey: index-page
 title: Wilderness Liz
-image: /img/liz-scout.jpg
+image: /img/home-jumbotron.jpg
 heading: Wilderness Liz
 subheading: Adv
 mainpitch:
