@@ -3,7 +3,7 @@ import { navigate } from 'gatsby-link'
 import Layout from '../../components/Layout'
 
 function encode(data) {
-  const formData = new FormData()
+  const formData = new FormData();
 
   for (const key of Object.keys(data)) {
     formData.append(key, data[key])
@@ -14,21 +14,21 @@ function encode(data) {
 
 export default class Contact extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {}
   }
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value })
-  }
+  };
 
   handleAttachment = e => {
     this.setState({ [e.target.name]: e.target.files[0] })
-  }
+  };
 
   handleSubmit = e => {
-    e.preventDefault()
-    const form = e.target
+    e.preventDefault();
+    const form = e.target;
     fetch('/', {
       method: 'POST',
       body: encode({
@@ -38,7 +38,7 @@ export default class Contact extends React.Component {
     })
       .then(() => navigate(form.getAttribute('action')))
       .catch(error => alert(error))
-  }
+  };
 
   render() {
     return (

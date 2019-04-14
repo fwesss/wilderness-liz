@@ -6,7 +6,7 @@ import './all.sass'
 import useSiteMetadata from './SiteMetadata'
 
 const TemplateWrapper = ({ children }) => {
-  const { title, description } = useSiteMetadata()
+  const { title, description } = useSiteMetadata();
   return (
     <div>
       <Helmet>
@@ -49,6 +49,6 @@ const TemplateWrapper = ({ children }) => {
       <Footer />
     </div>
   )
-}
+};
 
 export default TemplateWrapper
