@@ -1,9 +1,9 @@
 ---
 templateKey: index-page
-title: Great coffee with a conscience
-image: /img/home-jumbotron.jpg
-heading: Great coffee with a conscience
-subheading: Support sustainable farming while enjoying a cup
+title: Wilderness Liz
+image: /img/liz-scout.jpg
+heading: Wilderness Liz
+subheading: Adv
 mainpitch:
   title: Why Kaldi
   description: >
