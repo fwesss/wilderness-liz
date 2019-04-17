@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {TripPostTemplate} from '../../templates/trip-page'
 
 const TripPostPreview = ({entry, widgetFor}) => (
-    <BlogPostTemplate
+    <TripPostTemplate
         content={widgetFor('body')}
         description={entry.getIn(['data', 'description'])}
         tags={entry.getIn(['data', 'tags'])}
