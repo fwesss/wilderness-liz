@@ -55,7 +55,7 @@ export default () => (
       query TripRollQuery {
         allMarkdownRemark(
           sort: { order: DESC, fields: [frontmatter___date] }
-          filter: { frontmatter: { templateKey: { eq: "trip-post" } } }
+          filter: { frontmatter: { templateKey: { eq: "trip-page" } } }
         ) {
           edges {
             node {
