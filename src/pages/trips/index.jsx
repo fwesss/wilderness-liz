@@ -28,6 +28,7 @@ export default class TripIndexPage extends React.Component {
                 <section className="section">
                     <div className="container">
                         <div className="content">
+                            Test Text
                             <TripRoll/>
                         </div>
                     </div>
