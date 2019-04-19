@@ -1,7 +1,3 @@
-[context.production.environment]
-  CMS_BRANCH = "production"
-[context.dev.environment]
-  CMS_BRANCH = "dev"
 [build]
   publish = "public"
   command = "npm run build"
