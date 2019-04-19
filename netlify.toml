@@ -8,3 +8,5 @@
 [[redirects]]
   from = "https://wildernessliz.netlify.com/*"
   to = "https://wildernessliz.com/:splat"
+  status = 301
+  force = true
