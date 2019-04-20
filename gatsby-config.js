@@ -7,30 +7,6 @@ module.exports = {
             'The blog and home of everything related to Elizabeth Feller and her outdoor adventures.',
     },
     plugins: [
-        'gatsby-plugin-react-helmet',
-        'gatsby-plugin-sass',
-        {
-            // keep as first gatsby-source-filesystem plugin for gatsby image support
-            resolve: 'gatsby-source-filesystem',
-            options: {
-                path: `${__dirname}/static/img`,
-                name: 'uploads',
-            },
-        },
-        {
-            resolve: 'gatsby-source-filesystem',
-            options: {
-                path: `${__dirname}/src/pages`,
-                name: 'pages',
-            },
-        },
-        {
-            resolve: 'gatsby-source-filesystem',
-            options: {
-                path: `${__dirname}/src/img`,
-                name: 'images',
-            },
-        },
         'gatsby-plugin-sharp',
         'gatsby-transformer-sharp',
         {
@@ -61,17 +37,35 @@ module.exports = {
                 ],
             },
         },
+        'gatsby-plugin-react-helmet',
+        'gatsby-plugin-sass',
+        {
+            // keep as first gatsby-source-filesystem plugin for gatsby image support
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                path: `${__dirname}/static/img`,
+                name: 'uploads',
+            },
+        },
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                path: `${__dirname}/src/pages`,
+                name: 'pages',
+            },
+        },
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                path: `${__dirname}/src/img`,
+                name: 'images',
+            },
+        },
         {
             resolve: 'gatsby-plugin-netlify-cms',
             options: {
                 modulePath: `${__dirname}/src/cms/cms.jsx`,
             },
-        },
-        {
-            resolve: `gatsby-source-instagram-all`,
-            options: {
-                access_token: "1166201.1677ed0.ea3ea942bcf645b5b2f6d4e0d89f25a8"
-            }
         },
         {
             resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
