@@ -2,7 +2,7 @@
 templateKey: index-page
 title: Great coffee with a conscience
 image: >-
-  https://res.cloudinary.com/wilderness-liz/image/upload/v1555796249/sierra_azeeem.webp
+  https://res.cloudinary.com/wilderness-liz/image/upload/c_scale,w_2048/v1555796839/sierra_ox5ak9.webp
 heading: Great coffee with a conscience
 subheading: Support sustainable farming while enjoying a cup
 mainpitch:
