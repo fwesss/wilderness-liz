@@ -68,6 +68,12 @@ module.exports = {
             },
         },
         {
+            resolve: `gatsby-source-instagram-all`,
+            options: {
+                access_token: "1166201.1677ed0.ea3ea942bcf645b5b2f6d4e0d89f25a8"
+            }
+        },
+        {
             resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
             options: {
                 develop: true, // Activates purging in npm run develop
