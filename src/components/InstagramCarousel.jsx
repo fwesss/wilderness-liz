@@ -1,74 +1,91 @@
 import React from 'react';
 
 import Slider from 'react-slick';
-import jsonp from 'jsonp-promise';
+import Img from "gatsby-image";
 
-class InstagramCarousel extends React.Component {
-    constructor(props) {
-        super(props);
+import {useStaticQuery, graphql} from 'gatsby'
 
-        this.data = [];
-    }
+function InstagramCarousel() {
+    const {allFile} = useStaticQuery(
+        graphql`
+            query {
+                allFile(
+                    sort: { fields: name, order: DESC }
+                    filter: { sourceInstanceName: { eq: "insta" } }
+                ) {
+                    edges {
+                        node {
+                            id
+                            name
+                            childImageSharp {
+                                fixed(width: 350, height: 250) {
+                                    ...GatsbyImageSharpFixed_withWebp_tracedSVG
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        `
+    );
 
-    componentWillMount() {
-        let accessToken = this.props.accessToken,
-            userId = this.props.userId,
-            limit = this.props.limit,
-            endpoint = `https://api.instagram.com/v1/users/${userId}/media/recent/`
-                + `?count=${limit}&access_token=${accessToken}`;
+    let images = [];
 
-        /*
-         * Request Instagram API for pictures
-         */
-        let promise = jsonp(endpoint).promise.then((response) => {
+    allFile.edges.forEach(({node}) => {
+        images.push(<div>
+            <Img
+                fixed={node.childImageSharp.fixed}
+                key={node.id}
+                alt={node.name.replace(/-/g, ' ')}
+            />
+        </div>);
+    });
 
-            // process response data (adding all images to data array)
-            response.data.forEach((object) => {
-                this.data.push(object.images.standard_resolution.url);
-            });
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 6,
+        slidesToScroll: 6,
+        autoplay: true,
+        autoplaySpeed: 4000,
+        responsive: [
+            {
+                breakpoint: 1745,
+                settings: {
+                    slidesToShow: 5,
+                    slidesToScroll: 5,
+                }
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    };
 
-            // update state of component
-            this.setState({
-                data: this.data
-            });
-        });
-    }
-
-    render() {
-        let images = [];
-
-        this.data.forEach((src, k) => {
-            images.push(<div key={k} className="instagram-slider-image"><img
-                src={src}/></div>);
-        });
-
-        if (!images.length) {
-            images.push(<div key="0"><p className="instagram-slider-empty"/>
-            </div>);
-        }
-
-        /*
-         * Slider display settings
-         */
-        const settings = {
-            dots: true,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 1,
-            slidesToScroll: 1
-        };
-        return (
-            <Slider {...settings}>
-                {images}
-            </Slider>
-        );
-    }
+    return (
+        <Slider {...settings}>
+            {images}
+        </Slider>
+    )
 }
 
-InstagramCarousel.defaultProps = {
-    userId: 'self',
-    limit: 4,
-    accessToken: "1166201.1677ed0.f5e97fb981a34ed4adf7411b31269956"
-};
-
-export default InstagramCarousel;
+export default InstagramCarousel
