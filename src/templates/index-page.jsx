@@ -5,6 +5,8 @@ import {Link, graphql} from 'gatsby'
 import Layout from '../components/Layout'
 import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
+import InstagramCarousel from '../components/InstagramCarousel'
+
 
 export const IndexPageTemplate = ({
                                       image,
@@ -64,7 +66,9 @@ export const IndexPageTemplate = ({
                 </h3>
             </div>
         </div>
-        <div id="instafeed"/>
+        <div>
+            <InstagramCarousel/>
+        </div>
         <section className="section section--gradient">
             <div className="container">
                 <div className="section">
@@ -151,7 +155,7 @@ export default IndexPage
 
 export const pageQuery = graphql`
     query IndexPageTemplate {
-        markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+        markdownRemark(frontmatter: {templateKey: {eq: "index-page"}}) {
             frontmatter {
                 title
                 image {
