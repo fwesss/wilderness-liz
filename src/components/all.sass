@@ -3,14 +3,17 @@
 @import "~slick-carousel/slick/slick-theme.css"
 
 // Config vars
-// Wilderness Liz logo brand color: #70927C
-$wilderness-liz-green: #70927C
-$wilderness-liz-green-invert: #8F6D82
+// Wilderness Liz logo brand color: #A1B5B2
+$wilderness-liz-green: #A1B5B2
+$wilderness-liz-green-invert: #5E4A4D
 
 $primary: $wilderness-liz-green
 $primary-invert: $wilderness-liz-green-invert
-$body-color: #333
+$body-color: #152A23
 $black: #2b2523
+
+.navbar
+  background-image: linear-gradient(to right, #ffffff, #ffffff, #d1d9dd, #b7c7c9, #a1b5b2)
 
 .navbar .navbar-menu
   box-shadow:none !important
@@ -83,8 +86,12 @@ $black: #2b2523
   height: 1.5rem
   fill: currentColor
 
-.navbar-brand .navbar-item.logo
-  padding: 0 1rem
+.navbar-item img
+  max-height: 5rem !important
+
+.navbar-item
+  padding: 0 0.75rem !important
+  font-size: 1.15rem !important
 
 footer.footer
   padding: 3rem 0rem 0rem
