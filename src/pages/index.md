@@ -1,9 +1,9 @@
 ---
 templateKey: index-page
-title: Great coffee with a conscience
+title: Wilderness Liz
 image: /img/sierra.jpg
-heading: Great coffee with a conscience
-subheading: Support sustainable farming while enjoying a cup
+heading: Wilderness Liz
+subheading: No Stone Unturned
 mainpitch:
   title: Why Wilderness Liz
   description: >
