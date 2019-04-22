@@ -1,7 +1,7 @@
 ---
 templateKey: index-page
 title: Wilderness Liz
-image: /img/sierra.jpg
+image: /img/zion.jpg
 heading: Wilderness Liz
 subheading: No Stone Unturned
 mainpitch:
