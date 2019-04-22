@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {Link, graphql} from 'gatsby'
+import BackgroundImage from 'gatsby-background-image'
 
 import Layout from '../components/Layout'
 import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
 import InstagramCarousel from '../components/InstagramCarousel'
-
 
 export const IndexPageTemplate = ({
                                       image,
@@ -18,15 +18,10 @@ export const IndexPageTemplate = ({
                                       intro,
                                   }) => (
     <div>
-        <div
+        <BackgroundImage
             className="full-width-image margin-top-0"
-            style={{
-                backgroundImage: `url(${
-                    !!image.childImageSharp ? image.childImageSharp.fluid.src : image
-                    })`,
-                backgroundPosition: `top left`,
-                backgroundAttachment: `fixed`,
-            }}
+            fluid={image.childImageSharp.fluid}
+
         >
             <div
                 style={{
@@ -65,7 +60,7 @@ export const IndexPageTemplate = ({
                     {subheading}
                 </h3>
             </div>
-        </div>
+        </BackgroundImage>
         <div>
             <InstagramCarousel/>
         </div>

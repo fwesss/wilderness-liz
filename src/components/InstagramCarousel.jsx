@@ -18,7 +18,7 @@ function InstagramCarousel() {
                             id
                             name
                             childImageSharp {
-                                fixed(width: 350, height: 250) {
+                                fixed(width: 480, height: 360) {
                                     ...GatsbyImageSharpFixed_withWebp_tracedSVG
                                 }
                             }
@@ -45,27 +45,27 @@ function InstagramCarousel() {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 6,
-        slidesToScroll: 6,
+        slidesToShow: 5,
+        slidesToScroll: 5,
         autoplay: true,
         autoplaySpeed: 4000,
         responsive: [
             {
-                breakpoint: 1745,
+                breakpoint: 1920,
                 settings: {
-                    slidesToShow: 5,
-                    slidesToScroll: 5,
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
                 }
             },
             {
-                breakpoint: 1024,
+                breakpoint: 1440,
                 settings: {
                     slidesToShow: 3,
                     slidesToScroll: 3,
                 }
             },
             {
-                breakpoint: 600,
+                breakpoint: 960,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2
