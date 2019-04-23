@@ -38,19 +38,6 @@ module.exports = {
             },
         },
         'gatsby-plugin-react-helmet',
-        {
-            resolve: `gatsby-plugin-manifest`,
-            options: {
-                name: `Wilderness Liz`,
-                short_name: `Wilderness Liz`,
-                start_url: `/`,
-                background_color: `#F7F0EB`,
-                theme_color: `#A1B5B2`,
-                display: `standalone`,
-                icon: 'src/img/logo-blue.jpg',
-            },
-        },
-        `gatsby-plugin-offline`,
         'gatsby-plugin-sass',
         {
             // keep as first gatsby-source-filesystem plugin for gatsby image support
@@ -95,6 +82,19 @@ module.exports = {
             },
         }, // must be after other CSS plugins
         'gatsby-plugin-netlify', // make sure to keep it last in the array
+        {
+            resolve: `gatsby-plugin-manifest`,
+            options: {
+                name: `Wilderness Liz`,
+                short_name: `Wilderness Liz`,
+                start_url: `/`,
+                background_color: `#F7F0EB`,
+                theme_color: `#A1B5B2`,
+                display: `standalone`,
+                icon: 'src/img/logo-blue.jpg',
+            },
+        },
+        `gatsby-plugin-offline`,
     ],
     // for avoiding CORS while developing Netlify Functions locally
     // read more: https://www.gatsbyjs.org/docs/api-proxy/#advanced-proxying
