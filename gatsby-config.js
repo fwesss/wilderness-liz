@@ -38,6 +38,19 @@ module.exports = {
             },
         },
         'gatsby-plugin-react-helmet',
+        `gatsby-plugin-offline`,
+        {
+            resolve: `gatsby-plugin-manifest`,
+            options: {
+                name: `Wilderness Liz`,
+                short_name: `Wilderness Liz`,
+                start_url: `/`,
+                background_color: `#F7F0EB`,
+                theme_color: `#A1B5B2`,
+                display: `standalone`,
+                icon: 'src/img/logo-blue.jpg',
+            },
+        },
         'gatsby-plugin-sass',
         {
             // keep as first gatsby-source-filesystem plugin for gatsby image support
