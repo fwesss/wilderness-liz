@@ -38,7 +38,6 @@ module.exports = {
             },
         },
         'gatsby-plugin-react-helmet',
-        `gatsby-plugin-offline`,
         {
             resolve: `gatsby-plugin-manifest`,
             options: {
@@ -51,6 +50,7 @@ module.exports = {
                 icon: 'src/img/logo-blue.jpg',
             },
         },
+        `gatsby-plugin-offline`,
         'gatsby-plugin-sass',
         {
             // keep as first gatsby-source-filesystem plugin for gatsby image support
