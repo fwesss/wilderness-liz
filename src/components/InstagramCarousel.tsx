@@ -1,14 +1,13 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importDefault(require("react"));
-const react_slick_1 = __importDefault(require("react-slick"));
-const gatsby_image_1 = __importDefault(require("gatsby-image"));
-const gatsby_1 = require("gatsby");
+import React from 'react';
+
+import Slider from 'react-slick';
+import Img from "gatsby-image";
+
+import {useStaticQuery, graphql} from 'gatsby'
+
 function InstagramCarousel() {
-    const { allFile } = gatsby_1.useStaticQuery(gatsby_1.graphql `
+    const {allFile} = useStaticQuery(
+        graphql`
             query {
                 allFile(
                     sort: { fields: name, order: DESC }
@@ -27,13 +26,21 @@ function InstagramCarousel() {
                     }
                 }
             }
-        `);
+        `
+    );
+
     let images = [];
-    allFile.edges.forEach(({ node }) => {
+
+    allFile.edges.forEach(({node}) => {
         images.push(<div>
-            <gatsby_image_1.default fixed={node.childImageSharp.fixed} key={node.id} alt={node.name.replace(/-/g, ' ')}/>
+            <Img
+                fixed={node.childImageSharp.fixed}
+                key={node.id}
+                alt={node.name.replace(/-/g, ' ')}
+            />
         </div>);
     });
+
     const settings = {
         dots: true,
         infinite: true,
@@ -73,9 +80,12 @@ function InstagramCarousel() {
             }
         ]
     };
-    return (<react_slick_1.default {...settings}>
+
+    return (
+        <Slider {...settings}>
             {images}
-        </react_slick_1.default>);
+        </Slider>
+    )
 }
-exports.default = InstagramCarousel;
-//# sourceMappingURL=InstagramCarousel.jsx.map
+
+export default InstagramCarousel
