@@ -1,8 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const gatsby_1 = require("gatsby");
+import {graphql, useStaticQuery} from 'gatsby'
+
 const useSiteMetadata = () => {
-    const { site } = gatsby_1.useStaticQuery(gatsby_1.graphql `
+    const {site} = useStaticQuery(
+        graphql`
             query SITE_METADATA_QUERY {
                 site {
                     siteMetadata {
@@ -11,8 +11,9 @@ const useSiteMetadata = () => {
                     }
                 }
             }
-        `);
-    return site.siteMetadata;
+        `
+    );
+    return site.siteMetadata
 };
-exports.default = useSiteMetadata;
-//# sourceMappingURL=SiteMetadata.jsx.map
+
+export default useSiteMetadata
