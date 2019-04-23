@@ -18,8 +18,8 @@ function InstagramCarousel() {
                             id
                             name
                             childImageSharp {
-                                fixed(width: 480, height: 360) {
-                                    ...GatsbyImageSharpFixed_withWebp_tracedSVG
+                                fluid(maxWidth: 640, maxHeight: 640) {
+                                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
                                 }
                             }
                         }
@@ -34,7 +34,7 @@ function InstagramCarousel() {
     allFile.edges.forEach(({node}) => {
         images.push(<div>
             <Img
-                fixed={node.childImageSharp.fixed}
+                fluid={node.childImageSharp.fluid}
                 key={node.id}
                 alt={node.name.replace(/-/g, ' ')}
             />
@@ -45,34 +45,27 @@ function InstagramCarousel() {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 5,
-        slidesToScroll: 5,
+        slidesToShow: 4,
+        slidesToScroll: 4,
         autoplay: true,
         autoplaySpeed: 4000,
         responsive: [
             {
                 breakpoint: 1920,
                 settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
-                }
-            },
-            {
-                breakpoint: 1440,
-                settings: {
                     slidesToShow: 3,
                     slidesToScroll: 3,
                 }
             },
             {
-                breakpoint: 960,
+                breakpoint: 1280,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2
                 }
             },
             {
-                breakpoint: 480,
+                breakpoint: 640,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1
