@@ -38,6 +38,18 @@ module.exports = {
             },
         },
         'gatsby-plugin-react-helmet',
+        'gatsby-plugin-sass',
+        {
+            resolve: `gatsby-plugin-emotion`,
+        },
+        {
+            resolve: 'gatsby-plugin-web-font-loader',
+            options: {
+                google: {
+                    families: ['Open Sans:300,300i,400,400i,600,600i,700,700i,800,800i']
+                }
+            }
+        },
         {
             // keep as first gatsby-source-filesystem plugin for gatsby image support
             resolve: 'gatsby-source-filesystem',
@@ -73,6 +85,13 @@ module.exports = {
                 modulePath: `${__dirname}/src/cms/cms.jsx`,
             },
         },
+        {
+            resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
+            options: {
+                develop: true, // Activates purging in npm run develop
+                purgeOnly: ['/all.sass'], // applies purging only on the bulma css file
+            },
+        }, // must be after other CSS plugins
         {
             resolve: `gatsby-plugin-manifest`,
             options: {

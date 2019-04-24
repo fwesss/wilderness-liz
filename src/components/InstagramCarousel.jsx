@@ -37,6 +37,7 @@ function InstagramCarousel() {
                 fluid={node.childImageSharp.fluid}
                 key={node.id}
                 alt={node.name.replace(/-/g, ' ')}
+                backgroundColor={`#A1B5B2`}
             />
         </div>);
     });
