@@ -21,7 +21,7 @@ export const IndexPageTemplate = ({
                                       description,
                                       intro,
                                   }) => (
-    <main>
+    <main id="page-wrap">
         <BackgroundImage fluid={image.childImageSharp.fluid}
                          backgroundColor={`#A1B5B2`}
         >

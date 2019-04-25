@@ -4,18 +4,15 @@ import Footer from './Footer'
 import Navbar from './Navbar'
 import './all.sass'
 import useSiteMetadata from './SiteMetadata'
-import {createTheme, ThemeProvider} from "mineral-ui";
+import {ThemeProvider} from "mineral-ui";
+import MyTheme from "../components/theme";
 
 const TemplateWrapper = ({children}) => {
     const {title, description} = useSiteMetadata();
 
-    const myTheme = createTheme({
-        colors: { theme: 'green' },
-    });
-
     return (
-        <ThemeProvider theme={myTheme}>
-            <div>
+        <ThemeProvider theme={MyTheme}>
+            <div id="outer-container">
                 <Helmet>
                     <html lang="en"/>
                     <title>{title}</title>
