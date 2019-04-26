@@ -52,6 +52,7 @@ TripPostTemplate.propTypes = {
     contentComponent: PropTypes.func,
     description: PropTypes.string,
     title: PropTypes.string,
+    cover_image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     helmet: PropTypes.object,
 };
 
