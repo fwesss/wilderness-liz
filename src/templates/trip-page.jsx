@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {kebabCase} from 'lodash'
 import Helmet from 'react-helmet'
 import {graphql, Link} from 'gatsby'
+import Img from 'gatsby-image'
 import Layout from '../components/Layout'
 import Content, {HTMLContent} from '../components/Content'
 
@@ -12,6 +13,7 @@ export const TripPostTemplate = ({
                                      description,
                                      tags,
                                      title,
+                                     cover_image,
                                      helmet,
                                  }) => {
     const PostContent = contentComponent || Content;
@@ -25,6 +27,7 @@ export const TripPostTemplate = ({
                         <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
                             {title}
                         </h1>
+                        <Img fluid={cover_image}/>
                         <p>{description}</p>
                         <PostContent content={content}/>
                         {tags && tags.length ? (
@@ -52,6 +55,7 @@ TripPostTemplate.propTypes = {
     contentComponent: PropTypes.func,
     description: PropTypes.string,
     title: PropTypes.string,
+    cover_image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     helmet: PropTypes.object,
 };
 
@@ -71,10 +75,15 @@ const TripPost = ({data}) => {
                             name="description"
                             content={`${post.frontmatter.description}`}
                         />
+                        <meta
+                            property="og:image"
+                            content={post.frontmatter.cover_image.childImageSharp.fluid.src}
+                        />
                     </Helmet>
                 }
                 tags={post.frontmatter.tags}
                 title={post.frontmatter.title}
+                cover_image={post.frontmatter.cover_image.childImageSharp.fluid}
             />
         </Layout>
     )
@@ -98,6 +107,13 @@ export const pageQuery = graphql`
                 title
                 description
                 tags
+                cover_image {
+                    childImageSharp {
+                        fluid(maxWidth: 2080) {
+                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                        }
+                    }
+                }
             }
         }
     }

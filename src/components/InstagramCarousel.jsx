@@ -18,7 +18,7 @@ function InstagramCarousel() {
                             id
                             name
                             childImageSharp {
-                                fluid(maxWidth: 640, maxHeight: 640) {
+                                fluid(maxWidth: 2080, maxHeight: 2080) {
                                     ...GatsbyImageSharpFluid_withWebp_tracedSVG
                                 }
                             }
@@ -32,17 +32,17 @@ function InstagramCarousel() {
     let images = [];
 
     allFile.edges.forEach(({node}) => {
-        images.push(<div>
-            <Img
-                fluid={node.childImageSharp.fluid}
-                key={node.id}
-                alt={node.name.replace(/-/g, ' ')}
+        images.push(<div key={node.id}>
+            <Img fluid={node.childImageSharp.fluid}
+                 alt={node.name.replace(/-/g, ' ')}
+                 backgroundColor={`#A1B5B2`}
             />
         </div>);
     });
 
     const settings = {
         dots: true,
+        arrows: false,
         infinite: true,
         speed: 500,
         slidesToShow: 4,

@@ -10,3 +10,7 @@
   to = "https://wildernessliz.com/:splat"
   status = 301
   force = true
+[[headers]]
+for = "/static/*"
+[headers.values]
+Cache-Control = "public, max-age=360000"

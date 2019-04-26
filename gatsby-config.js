@@ -10,6 +10,13 @@ module.exports = {
         'gatsby-plugin-sharp',
         'gatsby-transformer-sharp',
         {
+            resolve: `gatsby-plugin-netlify-cms-paths`,
+            options: {
+                // Path to your Netlify CMS config file
+                cmsConfig: `/static/admin/config.yml`
+            }
+        },
+        {
             resolve: 'gatsby-transformer-remark',
             options: {
                 plugins: [
@@ -34,11 +41,23 @@ module.exports = {
                             destinationDir: 'static',
                         },
                     },
+                    `gatsby-plugin-netlify-cms-paths`,
                 ],
             },
         },
         'gatsby-plugin-react-helmet',
         'gatsby-plugin-sass',
+        {
+            resolve: `gatsby-plugin-emotion`,
+        },
+        {
+            resolve: 'gatsby-plugin-web-font-loader',
+            options: {
+                google: {
+                    families: ['Open Sans:300,300i,400,400i,600,600i,700,700i,800,800i']
+                }
+            }
+        },
         {
             // keep as first gatsby-source-filesystem plugin for gatsby image support
             resolve: 'gatsby-source-filesystem',

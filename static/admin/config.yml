@@ -5,6 +5,9 @@ backend:
 media_folder: static/img
 public_folder: /img
 
+site_url: https://wildernessliz.com
+logo_url: https://wildernessliz.com/static/logo-white-bc538ef8cd5367046e36e104547121f4.jpg
+
 publish_mode: editorial_workflow
 
 collections:
@@ -29,6 +32,7 @@ collections:
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "trip-page"}
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Cover Image", name: "cover_image", widget: "image"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}

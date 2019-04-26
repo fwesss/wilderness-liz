@@ -7,6 +7,10 @@ import Layout from '../components/Layout'
 import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
 import InstagramCarousel from '../components/InstagramCarousel'
+import {Box, Flex, FlexItem, Text} from "mineral-ui";
+// this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
+/** @jsx jsx */
+import {css, jsx} from '@emotion/core'
 
 export const IndexPageTemplate = ({
                                       image,
@@ -17,82 +21,78 @@ export const IndexPageTemplate = ({
                                       description,
                                       intro,
                                   }) => (
-    <div>
-        <BackgroundImage
-            className="full-width-image margin-top-0"
-            fluid={image.childImageSharp.fluid}
-
-        >
-            <div
-                style={{
-                    display: 'flex',
-                    height: '150px',
-                    lineHeight: '1',
-                    justifyContent: 'space-around',
-                    alignItems: 'left',
-                    flexDirection: 'column',
-                }}
+    <Box>
+        <header>
+            <BackgroundImage fluid={image.childImageSharp.fluid}
+                             backgroundColor={`#A1B5B2`}
             >
-                <h1
-                    className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
-                    style={{
-                        backgroundColor: '#A1B5B2',
-                        color: '#152A23',
-                        lineHeight: '1',
-                        padding: '0.25em',
-                    }}
+                <Flex justifyContent="evenly"
+                      direction="row"
+                      height={500}
                 >
-                    {title}
-                </h1>
-                <h3
-                    className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-                    style={{
-                        backgroundColor: '#A1B5B2',
-                        color: '#152A23',
-                        lineHeight: '1',
-                        padding: '0.25em',
-                    }}
-                >
-                    {subheading}
-                </h3>
+                    <FlexItem alignSelf="center"
+                              direction="column"
+                              css={css`
+                              padding: 32px;
+                              background-color: #A1B5B2;
+                              opacity: 0.85;
+                              font-size: 24px;
+                              border-radius: 4px;
+                              &:hover {
+                                color: white;
+                              }
+                            `}
+                    >
+                        <Text align="center" as="h1">
+                            {title}
+                        </Text>
+                        <Text align="center" as="h3">
+                            {subheading}
+                        </Text>
+                    </FlexItem>
+                </Flex>
+            </BackgroundImage>
+        </header>
+
+        <main id="page-wrap">
+            <div>
+                <InstagramCarousel/>
             </div>
-        </BackgroundImage>
-        <div>
-            <InstagramCarousel/>
-        </div>
-        <section className="section section--gradient">
-            <div className="container">
-                <div className="section">
-                    <div className="columns">
-                        <div className="column is-10 is-offset-1">
-                            <div className="content">
-                                <div className="content">
-                                    <div className="tile">
-                                        <h1 className="title">{mainpitch.title}</h1>
+
+            <div className="">
+                <div className="">
+                    <div className="">
+                        <div className="">
+                            <div className="">
+                                <div className="">
+                                    <div className="">
+                                        <div className="">
+                                            <h1 className="">{mainpitch.title}</h1>
+                                        </div>
+                                        <div className="">
+                                            <h3 className="">{mainpitch.description}</h3>
+                                        </div>
                                     </div>
-                                    <div className="tile">
-                                        <h3 className="subtitle">{mainpitch.description}</h3>
+                                    <div className="">
+                                        <div className="">
+                                            <h3 className="">
+                                                {heading}
+                                            </h3>
+                                            <p>{description}</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="columns">
-                                    <div className="column is-12">
-                                        <h3 className="has-text-weight-semibold is-size-2">
-                                            {heading}
+                                    <Features gridItems={intro.blurbs}/>
+                                    <div className="">
+                                        <h3 className="">
+                                            Latest stories
                                         </h3>
-                                        <p>{description}</p>
-                                    </div>
-                                </div>
-                                <Features gridItems={intro.blurbs}/>
-                                <div className="column is-12">
-                                    <h3 className="has-text-weight-semibold is-size-2">
-                                        Latest stories
-                                    </h3>
-                                    <BlogRoll/>
-                                    <div
-                                        className="column is-12 has-text-centered">
-                                        <Link className="btn" to="/blog">
-                                            Read more
-                                        </Link>
+                                        <BlogRoll/>
+                                        <div
+                                            className="">
+                                            <Link className="" to="/blog">
+                                                Read more
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -100,8 +100,8 @@ export const IndexPageTemplate = ({
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </main>
+    </Box>
 );
 
 IndexPageTemplate.propTypes = {
