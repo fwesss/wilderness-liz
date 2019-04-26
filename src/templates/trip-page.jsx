@@ -71,10 +71,15 @@ const TripPost = ({data}) => {
                             name="description"
                             content={`${post.frontmatter.description}`}
                         />
+                        <meta
+                            property="og:image"
+                            content={post.frontmatter.cover_image.childImageSharp.fluid.src}
+                        />
                     </Helmet>
                 }
                 tags={post.frontmatter.tags}
                 title={post.frontmatter.title}
+                image={post.frontmatter.cover_image.childImageSharp.fluid}
             />
         </Layout>
     )
@@ -98,6 +103,13 @@ export const pageQuery = graphql`
                 title
                 description
                 tags
+                cover_image {
+                    childImageSharp {
+                        fluid(maxWidth: 700) {
+                            src
+                        }
+                    }
+                }
             }
         }
     }

@@ -13,7 +13,7 @@ import {
 
 const BurgerStyles = {
     bmBurgerButton: {
-        position: 'fixed',
+        position: 'absolute',
         width: '36px',
         height: '30px',
         left: '36px',
