@@ -17,7 +17,7 @@ const BurgerStyles = {
         width: '36px',
         height: '30px',
         left: '36px',
-        top: '36px',
+        top: '30px',
     },
     bmBurgerBars: {
         background: '#3B3B3B'
@@ -80,31 +80,29 @@ const Navbar = class extends React.Component {
 
     render() {
         return (
-            <header>
-                <Menu styles={BurgerStyles}>
-                    <MyPrimaryNav minimal
-                                  itemAs={Link}
-                                  role="navigation"
-                                  aria-label="main-navigation"
-                    >
-                        <MyNavItem to="/">
-                            <MdHome/> Home
-                        </MyNavItem>
-                        <MyNavItem to="/about">
-                            <MdRestaurant/> Food Guides
-                        </MyNavItem>
-                        <MyNavItem to="/trips">
-                            <MdLandscape/> Trips
-                        </MyNavItem>
-                        <MyNavItem to="/blog">
-                            <MdLaptopMac/> Blog
-                        </MyNavItem>
-                        <MyNavItem to="/contact">
-                            <MdForum/> Contact
-                        </MyNavItem>
-                    </MyPrimaryNav>
-                </Menu>
-            </header>
+            <Menu styles={BurgerStyles}>
+                <MyPrimaryNav minimal
+                              itemAs={Link}
+                              role="navigation"
+                              aria-label="main-navigation"
+                >
+                    <MyNavItem to="/">
+                        <MdHome/> Home
+                    </MyNavItem>
+                    <MyNavItem to="/about">
+                        <MdRestaurant/> Food Guides
+                    </MyNavItem>
+                    <MyNavItem to="/trips">
+                        <MdLandscape/> Trips
+                    </MyNavItem>
+                    <MyNavItem to="/blog">
+                        <MdLaptopMac/> Blog
+                    </MyNavItem>
+                    <MyNavItem to="/contact">
+                        <MdForum/> Contact
+                    </MyNavItem>
+                </MyPrimaryNav>
+            </Menu>
         );
     }
 };

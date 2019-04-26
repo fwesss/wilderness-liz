@@ -7,7 +7,7 @@ import Layout from '../components/Layout'
 import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
 import InstagramCarousel from '../components/InstagramCarousel'
-import {Flex, FlexItem, Text} from "mineral-ui";
+import {Box, Flex, FlexItem, Text} from "mineral-ui";
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
 import {css, jsx} from '@emotion/core'
@@ -21,17 +21,18 @@ export const IndexPageTemplate = ({
                                       description,
                                       intro,
                                   }) => (
-    <main id="page-wrap">
-        <BackgroundImage fluid={image.childImageSharp.fluid}
-                         backgroundColor={`#A1B5B2`}
-        >
-            <Flex justifyContent="evenly"
-                  direction="row"
-                  height={500}
+    <Box>
+        <header>
+            <BackgroundImage fluid={image.childImageSharp.fluid}
+                             backgroundColor={`#A1B5B2`}
             >
-                <FlexItem alignSelf="center"
-                          direction="column"
-                          css={css`
+                <Flex justifyContent="evenly"
+                      direction="row"
+                      height={500}
+                >
+                    <FlexItem alignSelf="center"
+                              direction="column"
+                              css={css`
                               padding: 32px;
                               background-color: #A1B5B2;
                               opacity: 0.85;
@@ -41,22 +42,23 @@ export const IndexPageTemplate = ({
                                 color: white;
                               }
                             `}
-                >
-                    <Text align="center" as="h1">
-                        {title}
-                    </Text>
-                    <Text align="center" as="h3">
-                        {subheading}
-                    </Text>
-                </FlexItem>
-            </Flex>
-        </BackgroundImage>
+                    >
+                        <Text align="center" as="h1">
+                            {title}
+                        </Text>
+                        <Text align="center" as="h3">
+                            {subheading}
+                        </Text>
+                    </FlexItem>
+                </Flex>
+            </BackgroundImage>
+        </header>
 
-        <div>
-            <InstagramCarousel/>
-        </div>
+        <main id="page-wrap">
+            <div>
+                <InstagramCarousel/>
+            </div>
 
-        <div className="">
             <div className="">
                 <div className="">
                     <div className="">
@@ -64,31 +66,33 @@ export const IndexPageTemplate = ({
                             <div className="">
                                 <div className="">
                                     <div className="">
-                                        <h1 className="">{mainpitch.title}</h1>
+                                        <div className="">
+                                            <h1 className="">{mainpitch.title}</h1>
+                                        </div>
+                                        <div className="">
+                                            <h3 className="">{mainpitch.description}</h3>
+                                        </div>
                                     </div>
                                     <div className="">
-                                        <h3 className="">{mainpitch.description}</h3>
+                                        <div className="">
+                                            <h3 className="">
+                                                {heading}
+                                            </h3>
+                                            <p>{description}</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="">
+                                    <Features gridItems={intro.blurbs}/>
                                     <div className="">
                                         <h3 className="">
-                                            {heading}
+                                            Latest stories
                                         </h3>
-                                        <p>{description}</p>
-                                    </div>
-                                </div>
-                                <Features gridItems={intro.blurbs}/>
-                                <div className="">
-                                    <h3 className="">
-                                        Latest stories
-                                    </h3>
-                                    <BlogRoll/>
-                                    <div
-                                        className="">
-                                        <Link className="" to="/blog">
-                                            Read more
-                                        </Link>
+                                        <BlogRoll/>
+                                        <div
+                                            className="">
+                                            <Link className="" to="/blog">
+                                                Read more
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -96,8 +100,8 @@ export const IndexPageTemplate = ({
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
+    </Box>
 );
 
 IndexPageTemplate.propTypes = {

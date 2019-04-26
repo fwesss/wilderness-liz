@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {kebabCase} from 'lodash'
 import Helmet from 'react-helmet'
 import {graphql, Link} from 'gatsby'
+import Img from 'gatsby-image'
 import Layout from '../components/Layout'
 import Content, {HTMLContent} from '../components/Content'
 
@@ -12,6 +13,7 @@ export const TripPostTemplate = ({
                                      description,
                                      tags,
                                      title,
+                                     cover_image,
                                      helmet,
                                  }) => {
     const PostContent = contentComponent || Content;
@@ -25,6 +27,7 @@ export const TripPostTemplate = ({
                         <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
                             {title}
                         </h1>
+                        <Img fluid={cover_image}/>
                         <p>{description}</p>
                         <PostContent content={content}/>
                         {tags && tags.length ? (
@@ -80,7 +83,7 @@ const TripPost = ({data}) => {
                 }
                 tags={post.frontmatter.tags}
                 title={post.frontmatter.title}
-                image={post.frontmatter.cover_image.childImageSharp.fluid}
+                cover_image={post.frontmatter.cover_image.childImageSharp.fluid}
             />
         </Layout>
     )
@@ -106,8 +109,8 @@ export const pageQuery = graphql`
                 tags
                 cover_image {
                     childImageSharp {
-                        fluid(maxWidth: 700) {
-                            src
+                        fluid(maxWidth: 2080) {
+                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
                         }
                     }
                 }
