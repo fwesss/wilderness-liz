@@ -21,24 +21,24 @@ const TemplateWrapper = ({children}) => {
                     <link
                         rel="apple-touch-icon"
                         sizes="180x180"
-                        href="../../static/img/apple-touch-icon.png"
+                        href="../../static/img/logo-blue.jpg"
                     />
                     <link
                         rel="icon"
                         type="image/png"
-                        href="../../static/img/favicon-32x32.png"
+                        href="../../static/img/logo-blue.jpg"
                         sizes="32x32"
                     />
                     <link
                         rel="icon"
                         type="image/png"
-                        href="../../static/img/favicon-16x16.png"
+                        href="../../static/img/logo-blue.jpg"
                         sizes="16x16"
                     />
                     <link
                         rel="mask-icon"
-                        href="../../static/img/safari-pinned-tab.svg"
-                        color="#ff4400"
+                        href="../../static/img/logo-blue.jpg"
+                        color="#F7F0EB"
                     />
 
                     <meta property="og:type" content="business.business"/>
