@@ -45,16 +45,16 @@ const Footer = class extends React.Component {
                         </Menu>
                     </GridItem>
                     <GridItem>
-                        <SocialLink href="https://facebook.com">
+                        <SocialLink name="Facebook" href="https://facebook.com">
                             <FaFacebook/>
                         </SocialLink>
-                        <SocialLink href="https://twitter.com">
+                        <SocialLink name="Twitter" href="https://twitter.com">
                             <FaTwitterSquare/>
                         </SocialLink>
-                        <SocialLink href="https://instagram.com">
+                        <SocialLink name="Instagram" href="https://instagram.com">
                             <FaInstagram/>
                         </SocialLink>
-                        <SocialLink href="https://vimeo.com">
+                        <SocialLink name="Vimeo" href="https://vimeo.com">
                             <FaVimeoSquare/>
                         </SocialLink>
                     </GridItem>
