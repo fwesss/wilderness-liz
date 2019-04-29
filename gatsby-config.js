@@ -7,6 +7,12 @@ module.exports = {
             'The blog and home of everything related to Elizabeth Feller and her outdoor adventures.',
     },
     plugins: [
+        {
+            resolve: `gatsby-plugin-typography`,
+            options: {
+                pathToConfigModule: `src/utils/typography`,
+            }
+        },
         'gatsby-plugin-sharp',
         'gatsby-transformer-sharp',
         {
@@ -49,14 +55,6 @@ module.exports = {
         'gatsby-plugin-sass',
         {
             resolve: `gatsby-plugin-emotion`,
-        },
-        {
-            resolve: 'gatsby-plugin-web-font-loader',
-            options: {
-                google: {
-                    families: ['Open Sans:300,300i,400,400i,600,600i,700,700i,800,800i']
-                }
-            }
         },
         {
             // keep as first gatsby-source-filesystem plugin for gatsby image support

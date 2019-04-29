@@ -1,16 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {Link, graphql} from 'gatsby'
-import BackgroundImage from 'gatsby-background-image'
-
 import Layout from '../components/Layout'
 import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
 import InstagramCarousel from '../components/InstagramCarousel'
-import {Box, Flex, FlexItem, Text} from "mineral-ui";
-// this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
-/** @jsx jsx */
-import {css, jsx} from '@emotion/core'
+import Hero from "../components/Hero";
+import {Box} from "mineral-ui";
 
 export const IndexPageTemplate = ({
                                       image,
@@ -23,35 +19,9 @@ export const IndexPageTemplate = ({
                                   }) => (
     <Box>
         <header>
-            <BackgroundImage fluid={image.childImageSharp.fluid}
-                             backgroundColor={`#A1B5B2`}
-            >
-                <Flex justifyContent="evenly"
-                      direction="row"
-                      height={500}
-                >
-                    <FlexItem alignSelf="center"
-                              direction="column"
-                              css={css`
-                              padding: 32px;
-                              background-color: #A1B5B2;
-                              opacity: 0.85;
-                              font-size: 24px;
-                              border-radius: 4px;
-                              &:hover {
-                                color: white;
-                              }
-                            `}
-                    >
-                        <Text align="center" as="h1">
-                            {title}
-                        </Text>
-                        <Text align="center" as="h3">
-                            {subheading}
-                        </Text>
-                    </FlexItem>
-                </Flex>
-            </BackgroundImage>
+            <Hero cover_image={image.childImageSharp.fluid}
+                  title={title}
+                  description={subheading}/>
         </header>
 
         <main id="page-wrap">
