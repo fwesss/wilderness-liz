@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 
 const ContentBox = styled(Box)({
   padding: "32px",
+
 });
 
 export const HTMLContent = ({ content, className }) => (
