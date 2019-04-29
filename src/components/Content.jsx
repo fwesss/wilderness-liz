@@ -4,7 +4,7 @@ import {Box} from "mineral-ui";
 import styled from "@emotion/styled";
 
 const ContentBox = styled(Box)({
-  padding: "32px",
+  padding: "5vw",
 
 });
 
