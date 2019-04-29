@@ -39,6 +39,11 @@ module.exports = {
                             // the content container as this plugin uses this as the
                             // base for generating different widths of each image.
                             maxWidth: 2048,
+                            showCaptions: true,
+                            quality: 100,
+                            withWebp: true,
+                            tracedSVG: true,
+
                         },
                     },
                     {
@@ -95,7 +100,6 @@ module.exports = {
             resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
             options: {
                 develop: true, // Activates purging in npm run develop
-                purgeOnly: ['/all.sass'], // applies purging only on the bulma css file
             },
         }, // must be after other CSS plugins
         {
