@@ -43,7 +43,7 @@ module.exports = {
                             quality: 100,
                             withWebp: true,
                             tracedSVG: true,
-
+                            backgroundColor: "#A1B5B2",
                         },
                     },
                     {
