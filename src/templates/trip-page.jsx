@@ -7,6 +7,12 @@ import Layout from '../components/Layout'
 import Content, {HTMLContent} from '../components/Content'
 import {Box, Text} from "mineral-ui";
 import Hero from "../components/Hero";
+import styled from "@emotion/styled";
+
+
+const Tags = styled(Box)({
+    padding: "32px",
+});
 
 export const TripPostTemplate = ({
                                      content,
@@ -21,20 +27,23 @@ export const TripPostTemplate = ({
 
     return (
         <div>
-            <Box as="header" paddingTop="lg" paddingRight="lg">
+            <Box as="header">
                 {helmet || ''}
-                <Text align="end" as="h1">
-                    {title}
-                </Text>
+                <Box paddingTop="lg" paddingRight="lg">
+                    <Text align="end" as="h1">
+                        {title}
+                    </Text>
+                </Box>
                 <Hero cover_image={cover_image}
                       title={title}
                       description={description}/>
             </Box>
 
             <PostContent content={content}/>
-            <Box>
+
+            <Tags as="section">
                 {tags && tags.length ? (
-                    <div style={{marginTop: `4rem`}}>
+                    <Box>
                         <h4>Tags</h4>
                         <ul>
                             {tags.map(tag => (
@@ -44,9 +53,9 @@ export const TripPostTemplate = ({
                                 </li>
                             ))}
                         </ul>
-                    </div>
+                    </Box>
                 ) : null}
-            </Box>
+            </Tags>
         </div>
     )
 };
