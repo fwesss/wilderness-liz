@@ -1,11 +1,12 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import Footer from './Footer'
-import Navbar from './Navbar'
-import './all.sass'
-import useSiteMetadata from './SiteMetadata'
-import {ThemeProvider} from "mineral-ui";
+import React from 'react';
+import Helmet from 'react-helmet';
+import Footer from './Footer';
+import Navbar from './Navbar';
+import useSiteMetadata from './SiteMetadata';
 import MyTheme from "./Theme";
+import {ThemeProvider} from "mineral-ui";
+import "normalize.css";
+import './all.sass';
 
 const TemplateWrapper = ({children}) => {
     const {title, description} = useSiteMetadata();

@@ -2,6 +2,8 @@ import React from 'react';
 
 import Slider from 'react-slick';
 import Img from "gatsby-image";
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 
 import {useStaticQuery, graphql} from 'gatsby'
 
@@ -41,7 +43,7 @@ function InstagramCarousel() {
     });
 
     const settings = {
-        dots: true,
+        dots: false,
         arrows: false,
         infinite: true,
         speed: 500,
@@ -49,6 +51,9 @@ function InstagramCarousel() {
         slidesToScroll: 4,
         autoplay: true,
         autoplaySpeed: 4000,
+        pauseOnFocus: true,
+        pauseOnHover: true,
+        lazyLoad: 'progressive',
         responsive: [
             {
                 breakpoint: 1920,

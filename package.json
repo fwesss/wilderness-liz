@@ -9,7 +9,10 @@
     "@emotion/styled": "^10.0.10",
     "@types/react": "^16.8.15",
     "@types/react-dom": "^16.8.4",
+    "@types/react-helmet": "^5.0.8",
+    "@types/typography": "^0.16.2",
     "awesome-typescript-loader": "^5.2.1",
+    "babel-preset-gatsby": "^0.1.11",
     "bulma": "^0.7.0",
     "emotion-theming": "^10.0.10",
     "eslint-plugin-emotion": "^10.0.7",
@@ -81,6 +84,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "babel-plugin-emotion": "^10.0.9",
     "http-proxy-middleware": "^0.19.1",
     "netlify-lambda": "^1.4.3",
     "npm-run-all": "^4.1.5",
