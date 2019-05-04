@@ -1,10 +1,8 @@
-import React from "react";
-import {createTheme} from "mineral-ui";
-
-export const MyTheme = createTheme({
-    colors: {theme: 'slate'},
+import createTheme from "mineral-ui/themes/createTheme";
+export var MyTheme = createTheme({
+    colors: { theme: 'slate' },
     // Defer to typography.js
-    overrides: {fontFamily_system: ""}
+    overrides: { fontFamily_system: "" }
 });
-
-export default MyTheme
+export default MyTheme;
+//# sourceMappingURL=Theme.jsx.map

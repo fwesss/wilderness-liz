@@ -100,6 +100,7 @@ module.exports = {
             resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
             options: {
                 develop: true, // Activates purging in npm run develop
+                purgeOnly: ['/all.sass'], // applies purging only on the bulma css file
             },
         }, // must be after other CSS plugins
         {
@@ -112,6 +113,14 @@ module.exports = {
                 theme_color: `#A1B5B2`,
                 display: `standalone`,
                 icon: 'src/img/logo-blue.jpg',
+            },
+        },
+        {
+            resolve: `gatsby-plugin-typescript`,
+            options: {
+                isTSX: true, // defaults to false
+                jsxPragma: `jsx`, // defaults to "React"
+                allExtensions: true, // defaults to false
             },
         },
         `gatsby-plugin-offline`,
