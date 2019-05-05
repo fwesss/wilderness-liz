@@ -6,8 +6,8 @@ import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
 import InstagramCarousel from '../components/InstagramCarousel'
 import Hero from "../components/Hero";
+import HighlightRoll from "../components/HighlightRoll";
 import {Box} from "mineral-ui";
-import Navbar from "../components/Navbar";
 
 export const IndexPageTemplate = ({
                                       image,
@@ -29,6 +29,7 @@ export const IndexPageTemplate = ({
             <div>
                 <InstagramCarousel/>
             </div>
+            <HighlightRoll/>
 
             <div className="">
                 <div className="">
