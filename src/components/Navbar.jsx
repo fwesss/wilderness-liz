@@ -120,7 +120,7 @@ const mapSizesToProps = ({width}) => ({
 class Navbar extends React.Component {
     render() {
         return (
-            <Box>
+            <>
                 <MobileHeader>
                     <SiteTitle as="h1">Wilderness Liz</SiteTitle>
                 </MobileHeader>
@@ -174,7 +174,7 @@ class Navbar extends React.Component {
                             </DesktopNavItem>
                         </DesktopPrimaryNav>
                     </>}
-            </Box>
+            </>
         );
     }
 }
