@@ -7,6 +7,7 @@ import BlogRoll from '../components/BlogRoll'
 import InstagramCarousel from '../components/InstagramCarousel'
 import Hero from "../components/Hero";
 import {Box} from "mineral-ui";
+import Navbar from "../components/Navbar";
 
 export const IndexPageTemplate = ({
                                       image,
