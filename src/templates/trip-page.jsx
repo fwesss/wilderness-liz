@@ -5,7 +5,7 @@ import Helmet from 'react-helmet'
 import {graphql, Link} from 'gatsby'
 import Layout from '../components/Layout'
 import Content, {HTMLContent} from '../components/Content'
-import {Box, Text} from "mineral-ui";
+import {Box} from "mineral-ui";
 import Hero from "../components/Hero";
 import styled from "@emotion/styled";
 
@@ -29,11 +29,6 @@ export const TripPostTemplate = ({
         <div>
             <Box as="header">
                 {helmet || ''}
-                <Box paddingTop="lg" paddingRight="lg">
-                    <Text align="end" as="h1">
-                        {title}
-                    </Text>
-                </Box>
                 <Hero cover_image={cover_image}
                       title={title}
                       description={description}/>

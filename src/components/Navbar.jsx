@@ -17,8 +17,8 @@ const BurgerStyles = {
         position: 'fixed',
         width: '7vw',
         height: '6vw',
-        left: '7vw',
-        top: '27px',
+        left: '25px',
+        top: '3vw',
     },
     bmBurgerBars: {
         background: '#3B3B3B'
@@ -93,23 +93,24 @@ const MobileHeader = styled(Box)`
     z-index: 1000;
     background-color: #FFFFFF;
     width: 100%;
-    padding-top: 25px;
-    padding-right: 20px;
     text-align: center;
 `;
 
 const SiteTitle = styled(Text)`
-    padding-bottom: 15px;
+    padding-top: 25px;
     margin-bottom: 0;
     
     @media only screen and (max-width: 669px) {
+        padding-top: 2.5vw;
+        padding-right: 20px;
         text-align: end;
         font-size: 7vw;
     }
 `;
 
 const Break = styled('hr')`
-    margin-bottom: 0;
+    margin: 0 12vw;
+    height: 1px;
 `;
 
 const mapSizesToProps = ({width}) => ({

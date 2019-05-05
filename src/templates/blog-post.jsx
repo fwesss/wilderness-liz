@@ -5,6 +5,13 @@ import Helmet from 'react-helmet'
 import {graphql, Link} from 'gatsby'
 import Layout from '../components/Layout'
 import Content, {HTMLContent} from '../components/Content'
+import {Box} from "mineral-ui";
+import Hero from "../components/Hero";
+import styled from "@emotion/styled";
+
+const Tags = styled(Box)({
+    padding: "32px",
+});
 
 export const BlogPostTemplate = ({
                                      content,
@@ -12,38 +19,38 @@ export const BlogPostTemplate = ({
                                      description,
                                      tags,
                                      title,
+                                     cover_image,
                                      helmet,
                                  }) => {
     const PostContent = contentComponent || Content;
 
     return (
-        <section className="section">
-            {helmet || ''}
-            <div className="container content">
-                <div className="columns">
-                    <div className="column is-10 is-offset-1">
-                        <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-                            {title}
-                        </h1>
-                        <p>{description}</p>
-                        <PostContent content={content}/>
-                        {tags && tags.length ? (
-                            <div style={{marginTop: `4rem`}}>
-                                <h4>Tags</h4>
-                                <ul className="taglist">
-                                    {tags.map(tag => (
-                                        <li key={tag + `tag`}>
-                                            <Link
-                                                to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ) : null}
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div>
+            <Box as="header">
+                {helmet || ''}
+                <Hero cover_image={cover_image}
+                      title={title}
+                      description={description}/>
+            </Box>
+
+            <PostContent content={content}/>
+
+            <Tags as="section">
+                {tags && tags.length ? (
+                    <Box>
+                        <h4>Tags</h4>
+                        <ul>
+                            {tags.map(tag => (
+                                <li key={tag + `tag`}>
+                                    <Link
+                                        to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </Box>
+                ) : null}
+            </Tags>
+        </div>
     )
 };
 
@@ -52,6 +59,7 @@ BlogPostTemplate.propTypes = {
     contentComponent: PropTypes.func,
     description: PropTypes.string,
     title: PropTypes.string,
+    cover_image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     helmet: PropTypes.object,
 };
 
@@ -71,10 +79,15 @@ const BlogPost = ({data}) => {
                             name="description"
                             content={`${post.frontmatter.description}`}
                         />
+                        <meta
+                            property="og:image"
+                            content={post.frontmatter.cover_image.childImageSharp.fluid.src}
+                        />
                     </Helmet>
                 }
                 tags={post.frontmatter.tags}
                 title={post.frontmatter.title}
+                cover_image={post.frontmatter.cover_image.childImageSharp.fluid}
             />
         </Layout>
     )
@@ -98,6 +111,13 @@ export const pageQuery = graphql`
                 title
                 description
                 tags
+                cover_image {
+                    childImageSharp {
+                        fluid(maxWidth: 2080) {
+                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                        }
+                    }
+                }
             }
         }
     }

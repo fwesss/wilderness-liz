@@ -5,9 +5,8 @@ import Layout from '../components/Layout'
 import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
 import InstagramCarousel from '../components/InstagramCarousel'
-import Hero from "../components/Hero";
+import HighlightRoll from "../components/HighlightRoll";
 import {Box} from "mineral-ui";
-import Navbar from "../components/Navbar";
 
 export const IndexPageTemplate = ({
                                       image,
@@ -20,9 +19,7 @@ export const IndexPageTemplate = ({
                                   }) => (
     <Box>
         <header>
-            <Hero cover_image={image}
-                  title={title}
-                  description={subheading}/>
+            <HighlightRoll/>
         </header>
 
         <main id="page-wrap">
