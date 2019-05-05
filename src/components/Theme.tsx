@@ -1,5 +1,6 @@
-import React from "react";
-import {createTheme} from "mineral-ui";
+import * as React from "react";
+
+import createTheme from "mineral-ui/themes/createTheme";
 
 export const MyTheme = createTheme({
     colors: {theme: 'slate'},

@@ -7,7 +7,6 @@ import {
     MenuItem,
     Text,
     Link,
-    FlexItem
 } from "mineral-ui";
 import {
     FaFacebook,
@@ -17,9 +16,9 @@ import {
 } from "react-icons/fa";
 import styled from "@emotion/styled";
 
-const SocialLink = styled(Link)({
-    fontSize: "3em"
-});
+const SocialLink = styled(Link)`
+    font-size: 3em;
+`;
 
 const Footer = class extends React.Component {
     render() {

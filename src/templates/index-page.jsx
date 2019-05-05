@@ -7,6 +7,7 @@ import BlogRoll from '../components/BlogRoll'
 import InstagramCarousel from '../components/InstagramCarousel'
 import Hero from "../components/Hero";
 import {Box} from "mineral-ui";
+import Navbar from "../components/Navbar";
 
 export const IndexPageTemplate = ({
                                       image,
@@ -19,7 +20,7 @@ export const IndexPageTemplate = ({
                                   }) => (
     <Box>
         <header>
-            <Hero cover_image={image.childImageSharp.fluid}
+            <Hero cover_image={image}
                   title={title}
                   description={subheading}/>
         </header>
@@ -92,7 +93,7 @@ const IndexPage = ({data}) => {
     return (
         <Layout>
             <IndexPageTemplate
-                image={frontmatter.image}
+                image={frontmatter.image.childImageSharp.fluid}
                 title={frontmatter.title}
                 heading={frontmatter.heading}
                 subheading={frontmatter.subheading}

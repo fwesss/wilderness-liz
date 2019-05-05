@@ -1,21 +1,30 @@
+import * as React from "react";
+
 import {Flex, FlexItem, Text} from "mineral-ui";
 import BackgroundImage from "gatsby-background-image";
-import React from "react";
 import styled from "@emotion/styled";
 
-const Description = styled(Text)({
-    fontSize: "20px",
-    textAlign: "center",
-});
+const Description = styled(Text)`
+    font-size: 20px;
+    text-align: center;
+`;
 
-const DescriptionBox = styled(FlexItem)({
-    padding: "32px",
-    backgroundColor: "#A1B5B2",
-    opacity: "0.85",
-    borderRadius: "4px",
-});
+const DescriptionBox = styled(FlexItem)`
+    padding: 32px;
+    background-color: #A1B5B2;
+    opacity: 0.85;
+    border-radius: 4px;
+    align-self: center;
+    flex-direction: column;
+`;
 
-const Hero = ({cover_image, title, description}) => (
+interface HeroProps {
+    cover_image: any;
+    title: string;
+    description: string;
+}
+
+const Hero = ({cover_image, title, description}: HeroProps) => (
     <BackgroundImage fluid={cover_image}
                      backgroundColor={`#A1B5B2`}
     >
@@ -23,9 +32,7 @@ const Hero = ({cover_image, title, description}) => (
               direction="row"
               height={500}
         >
-            <DescriptionBox alignSelf="center"
-                            direction="column"
-            >
+            <DescriptionBox>
                 <Text align="center" as="h1">
                     {title}
                 </Text>
