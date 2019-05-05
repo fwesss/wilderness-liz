@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import useSiteMetadata from './SiteMetadata';
 import MyTheme from "./Theme";
 import {ThemeProvider} from "mineral-ui";
+import {TinyButton as ScrollUpButton} from "react-scroll-up-button";
 import "normalize.css";
 
 const TemplateWrapper = ({children}) => {
@@ -48,6 +49,7 @@ const TemplateWrapper = ({children}) => {
                 </Helmet>
                 <Navbar/>
                 <div id="content-container">{children}</div>
+                <ScrollUpButton/>
                 <Footer/>
             </div>
         </ThemeProvider>
