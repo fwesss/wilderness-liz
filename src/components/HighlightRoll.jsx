@@ -5,6 +5,28 @@ import {Grid, GridItem, Flex, FlexItem} from "mineral-ui";
 import Hero from "./Hero";
 import styled from "@emotion/styled";
 
+const GridPadBox = styled(GridItem)`
+    &:first-of-type {
+        padding: 0 10px 0 5vw;
+        
+        @media screen and (max-width: 1000px) {
+            padding: 0 5vw;
+        }
+    }
+    
+    &:last-of-type {
+        padding: 0 5vw 0 10px;
+        
+        @media screen and (max-width: 1000px) {
+            padding: 0 5vw;
+        }
+    }
+    
+    @media screen and (max-width: 1000px) {
+        padding: 0;
+    }
+`;
+
 const HighlightFlexItem = styled(FlexItem)`
     &:last-child {
         margin-top: 20px;
@@ -14,24 +36,6 @@ const HighlightFlexItem = styled(FlexItem)`
         &:first-of-type {
             margin-top: 20px;
         }
-    }
-`;
-
-const MainHighlight = styled(GridItem)`
-    padding-left: 5vw;
-    padding-right: 10px;
-    
-    @media screen and (max-width: 1000px) {
-        padding: 0 5vw;
-    }
-`;
-
-const OtherHighlight = styled(GridItem)` 
-    padding-left: 10px;
-    padding-right: 5vw;
-    
-    @media screen and (max-width: 1000px) {
-        padding: 0 5vw;
     }
 `;
 
@@ -47,33 +51,37 @@ class HighlightRoll extends React.Component {
                   gutterWidth={0}>
                 {posts &&
                 posts.slice(0, 1).map(({node: post}) => (
-                    <MainHighlight key={post.id}
-                                   as={Link}
-                                   to={post.fields.slug}
-                                   span={[5, 3]}>
-                        <Hero
-                            cover_image={post.frontmatter.cover_image.childImageSharp.fluid}
-                            description={post.excerpt}
-                            title={post.frontmatter.title}
-                            height={500}/>
-                    </MainHighlight>
+                    <GridPadBox key={post.id}
+                                span={[5, 3]}>
+                        <GridItem
+                            as={Link}
+                            to={post.fields.slug}>
+                            <Hero
+                                cover_image={post.frontmatter.cover_image.childImageSharp.fluid}
+                                description={post.excerpt}
+                                title={post.frontmatter.title}
+                                height={500}/>
+                        </GridItem>
+                    </GridPadBox>
                 ))}
-                <OtherHighlight span={[5, 2]}>
-                    <Flex direction="column">
-                        {posts &&
-                        posts.slice(1, 3).map(({node: post}) => (
-                            <HighlightFlexItem key={post.id}
-                                               as={Link}
-                                               to={post.fields.slug}>
-                                <Hero
-                                    cover_image={post.frontmatter.cover_image.childImageSharp.fluid}
-                                    description={post.excerpt}
-                                    title={post.frontmatter.title}
-                                    height={240}/>
-                            </HighlightFlexItem>
-                        ))}
-                    </Flex>
-                </OtherHighlight>
+                <GridPadBox>
+                    <GridItem span={[5, 2]}>
+                        <Flex direction="column">
+                            {posts &&
+                            posts.slice(1, 3).map(({node: post}) => (
+                                <HighlightFlexItem key={post.id}
+                                                   as={Link}
+                                                   to={post.fields.slug}>
+                                    <Hero
+                                        cover_image={post.frontmatter.cover_image.childImageSharp.fluid}
+                                        description={post.excerpt}
+                                        title={post.frontmatter.title}
+                                        height={240}/>
+                                </HighlightFlexItem>
+                            ))}
+                        </Flex>
+                    </GridItem>
+                </GridPadBox>
             </Grid>
         )
     }
