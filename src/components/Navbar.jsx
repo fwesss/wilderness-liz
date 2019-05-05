@@ -17,7 +17,7 @@ const BurgerStyles = {
         position: 'fixed',
         width: '7vw',
         height: '6vw',
-        left: '25px',
+        left: '5vw',
         top: '3vw',
     },
     bmBurgerBars: {
@@ -102,7 +102,7 @@ const SiteTitle = styled(Text)`
     
     @media only screen and (max-width: 669px) {
         padding-top: 2.5vw;
-        padding-right: 20px;
+        padding-right: 5vw;
         text-align: end;
         font-size: 7vw;
     }

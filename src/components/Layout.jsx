@@ -6,7 +6,6 @@ import useSiteMetadata from './SiteMetadata';
 import MyTheme from "./Theme";
 import {ThemeProvider} from "mineral-ui";
 import "normalize.css";
-import './all.sass';
 
 const TemplateWrapper = ({children}) => {
     const {title, description} = useSiteMetadata();

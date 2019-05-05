@@ -17,30 +17,48 @@ const HighlightFlexItem = styled(FlexItem)`
     }
 `;
 
+const MainHighlight = styled(GridItem)`
+    padding-left: 5vw;
+    padding-right: 10px;
+    
+    @media screen and (max-width: 1000px) {
+        padding: 0 5vw;
+    }
+`;
+
+const OtherHighlight = styled(GridItem)` 
+    padding-left: 10px;
+    padding-right: 5vw;
+    
+    @media screen and (max-width: 1000px) {
+        padding: 0 5vw;
+    }
+`;
+
 class HighlightRoll extends React.Component {
     render() {
         const {data} = this.props;
         const {edges: posts} = data.allMarkdownRemark;
 
         return (
-            <Grid columns={3}
+            <Grid columns={5}
                   breakpoints={[1000]}
-                  gutterWidth={20}
-                  margin="5vw">
+                  marginBottom="2vw"
+                  gutterWidth={0}>
                 {posts &&
                 posts.slice(0, 1).map(({node: post}) => (
-                    <GridItem key={post.id}
-                              as={Link}
-                              to={post.fields.slug}
-                              span={[3, 2]}>
+                    <MainHighlight key={post.id}
+                                   as={Link}
+                                   to={post.fields.slug}
+                                   span={[5, 3]}>
                         <Hero
                             cover_image={post.frontmatter.cover_image.childImageSharp.fluid}
                             description={post.excerpt}
                             title={post.frontmatter.title}
                             height={500}/>
-                    </GridItem>
+                    </MainHighlight>
                 ))}
-                <GridItem span={[3, 1]}>
+                <OtherHighlight span={[5, 2]}>
                     <Flex direction="column">
                         {posts &&
                         posts.slice(1, 3).map(({node: post}) => (
@@ -55,7 +73,7 @@ class HighlightRoll extends React.Component {
                             </HighlightFlexItem>
                         ))}
                     </Flex>
-                </GridItem>
+                </OtherHighlight>
             </Grid>
         )
     }
@@ -80,7 +98,7 @@ export default () => (
         ) {
           edges {
             node {
-              excerpt(pruneLength: 400)
+              excerpt(pruneLength: 40)
               id
               fields {
                 slug
