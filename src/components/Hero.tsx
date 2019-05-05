@@ -5,7 +5,7 @@ import BackgroundImage from "gatsby-background-image";
 import styled from "@emotion/styled";
 
 const Description = styled(Text)`
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
 `;
 

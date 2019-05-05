@@ -9,6 +9,12 @@ const HighlightFlexItem = styled(FlexItem)`
     &:last-child {
         margin-top: 20px;
     }
+    
+    @media screen and (max-width: 1000px) {
+        &:first-of-type {
+            margin-top: 20px;
+        }
+    }
 `;
 
 class HighlightRoll extends React.Component {
@@ -17,13 +23,16 @@ class HighlightRoll extends React.Component {
         const {edges: posts} = data.allMarkdownRemark;
 
         return (
-            <Grid gutterWidth={20}
-                  margin={80}>
+            <Grid columns={3}
+                  breakpoints={[1000]}
+                  gutterWidth={20}
+                  margin="5vw">
                 {posts &&
                 posts.slice(0, 1).map(({node: post}) => (
                     <GridItem key={post.id}
                               as={Link}
-                              to={post.fields.slug}>
+                              to={post.fields.slug}
+                              span={[3, 2]}>
                         <Hero
                             cover_image={post.frontmatter.cover_image.childImageSharp.fluid}
                             description={post.excerpt}
@@ -31,7 +40,7 @@ class HighlightRoll extends React.Component {
                             height={500}/>
                     </GridItem>
                 ))}
-                <GridItem>
+                <GridItem span={[3, 1]}>
                     <Flex direction="column">
                         {posts &&
                         posts.slice(1, 3).map(({node: post}) => (
