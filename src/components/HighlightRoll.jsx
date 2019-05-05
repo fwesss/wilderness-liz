@@ -1,24 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Link, graphql, StaticQuery} from 'gatsby'
-import Img from 'gatsby-image'
-import {
-    Button,
-    Card, CardActions, CardBlock,
-    CardFooter,
-    CardImage,
-    CardTitle, Flex, FlexItem,
-} from "mineral-ui";
+import {graphql, Link, StaticQuery} from 'gatsby'
+import {Grid, GridItem, Flex, FlexItem} from "mineral-ui";
+import Hero from "./Hero";
 import styled from "@emotion/styled";
 
-const MyCard = styled(Card)({
-    minWidth: "290px"
-});
-
-const MyFlexItem = styled(FlexItem)({
-    flexGrow: "1",
-    margin: "1em"
-});
+const HighlightFlexItem = styled(FlexItem)`
+    &:last-child {
+        margin-top: 20px;
+    }
+`;
 
 class HighlightRoll extends React.Component {
     render() {
@@ -26,32 +17,37 @@ class HighlightRoll extends React.Component {
         const {edges: posts} = data.allMarkdownRemark;
 
         return (
-            <Flex wrap
-                  id="roll-container"
-            >
+            <Grid gutterWidth={20}
+                  margin={80}>
                 {posts &&
-                posts.map(({node: post}) => (
-                    <MyFlexItem key={post.id}>
-                        <MyCard as="article">
-                            <CardImage as={Img}
-                                       fluid={post.frontmatter.cover_image.childImageSharp.fluid}/>
-                            <CardTitle as={Link} to={post.fields.slug}>
-                                {post.frontmatter.title}
-                            </CardTitle>
-                            <CardBlock>
-                                {post.excerpt}
-                            </CardBlock>
-                            <CardActions>
-                                <Button minimal as={Link}
-                                        to={post.fields.slug}>
-                                    Keep Reading →
-                                </Button>
-                            </CardActions>
-                            <CardFooter title={post.frontmatter.date}/>
-                        </MyCard>
-                    </MyFlexItem>
+                posts.slice(0, 1).map(({node: post}) => (
+                    <GridItem key={post.id}
+                              as={Link}
+                              to={post.fields.slug}>
+                        <Hero
+                            cover_image={post.frontmatter.cover_image.childImageSharp.fluid}
+                            description={post.excerpt}
+                            title={post.frontmatter.title}
+                            height={500}/>
+                    </GridItem>
                 ))}
-            </Flex>
+                <GridItem>
+                    <Flex direction="column">
+                        {posts &&
+                        posts.slice(1, 3).map(({node: post}) => (
+                            <HighlightFlexItem key={post.id}
+                                               as={Link}
+                                               to={post.fields.slug}>
+                                <Hero
+                                    cover_image={post.frontmatter.cover_image.childImageSharp.fluid}
+                                    description={post.excerpt}
+                                    title={post.frontmatter.title}
+                                    height={240}/>
+                            </HighlightFlexItem>
+                        ))}
+                    </Flex>
+                </GridItem>
+            </Grid>
         )
     }
 }
@@ -70,6 +66,8 @@ export default () => (
       query HighlightRollQuery {
         allMarkdownRemark(
           sort: { order: DESC, fields: [frontmatter___date] }
+          filter: {frontmatter: {templateKey: {in: ["trip-page", "blog-post"]}}}
+          limit: 3
         ) {
           edges {
             node {

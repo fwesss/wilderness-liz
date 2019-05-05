@@ -10,6 +10,7 @@ const Description = styled(Text)`
 `;
 
 const DescriptionBox = styled(FlexItem)`
+    margin: 32px;
     padding: 32px;
     background-color: #A1B5B2;
     opacity: 0.85;
@@ -22,15 +23,16 @@ interface HeroProps {
     cover_image: any;
     title: string;
     description: string;
+    height: string;
 }
 
-const Hero = ({cover_image, title, description}: HeroProps) => (
+const Hero = ({cover_image, title, description, height}: HeroProps) => (
     <BackgroundImage fluid={cover_image}
                      backgroundColor={`#A1B5B2`}
     >
         <Flex justifyContent="evenly"
               direction="row"
-              height={500}
+              height={height}
         >
             <DescriptionBox>
                 <Text align="center" as="h1">

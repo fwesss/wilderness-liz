@@ -22,7 +22,8 @@ export const IndexPageTemplate = ({
         <header>
             <Hero cover_image={image}
                   title={title}
-                  description={subheading}/>
+                  description={subheading}
+                  height={500}/>
         </header>
 
         <main id="page-wrap">
