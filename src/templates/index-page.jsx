@@ -8,16 +8,14 @@ export default class IndexPageTemplate extends React.Component {
     render() {
         return (
             <Layout>
-                <Box>
+                <Box as="main" id="page-wrap">
                     <header>
                         <HighlightRoll/>
                     </header>
 
-                    <main id="page-wrap">
-                        <div>
-                            <InstagramCarousel/>
-                        </div>
-                    </main>
+                    <section>
+                        <InstagramCarousel/>
+                    </section>
                 </Box>
             </Layout>
         )
