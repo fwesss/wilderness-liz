@@ -45,7 +45,8 @@ class HighlightRoll extends React.Component {
         const {edges: posts} = data.allMarkdownRemark;
 
         return (
-            <Grid columns={5}
+            <Grid className="grid" d
+                  columns={5}
                   breakpoints={[1000]}
                   marginBottom="2vw"
                   gutterWidth={0}>
@@ -53,14 +54,13 @@ class HighlightRoll extends React.Component {
                 posts.slice(0, 1).map(({node: post}) => (
                     <GridPadBox key={post.id}
                                 span={[5, 3]}>
-                        <GridItem
-                            as={Link}
-                            to={post.fields.slug}>
+                        <GridItem as={Link}
+                                  to={post.fields.slug}>
                             <Hero
                                 cover_image={post.frontmatter.cover_image.childImageSharp.fluid}
                                 description={post.excerpt}
                                 title={post.frontmatter.title}
-                                height={500}/>
+                                height={520}/>
                         </GridItem>
                     </GridPadBox>
                 ))}
