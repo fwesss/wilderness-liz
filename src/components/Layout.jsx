@@ -22,23 +22,23 @@ const TemplateWrapper = ({children}) => {
                     <link
                         rel="apple-touch-icon"
                         sizes="180x180"
-                        href="../../static/img/logo-blue.jpg"
+                        href="../img/logo-blue.jpg"
                     />
                     <link
                         rel="icon"
                         type="image/png"
-                        href="../../static/img/logo-blue.jpg"
+                        href="../img/logo-blue.jpg"
                         sizes="32x32"
                     />
                     <link
                         rel="icon"
                         type="image/png"
-                        href="../../static/img/logo-blue.jpg"
+                        href="../img/logo-blue.jpg"
                         sizes="16x16"
                     />
                     <link
                         rel="mask-icon"
-                        href="../../static/img/logo-blue.jpg"
+                        href="../img/logo-blue.jpg"
                         color="#F7F0EB"
                     />
 
