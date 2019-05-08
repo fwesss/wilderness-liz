@@ -8,7 +8,7 @@ export default class Hero extends React.Component {
     render() {
         let {cover_image, title, description, height} = this.props;
         return (
-            <Box as="figure" className="effect-milo" height={height}>
+            <Box as="figure" className="effect-steve" height={height}>
                 <Img fluid={cover_image}/>
                 <figcaption>
                     <Text as="h2">
