@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {kebabCase} from 'lodash'
 import Helmet from 'react-helmet'
@@ -13,46 +13,50 @@ const Tags = styled(Box)({
     padding: "32px",
 });
 
-export const BlogPostTemplate = ({
-                                     content,
-                                     contentComponent,
-                                     description,
-                                     tags,
-                                     title,
-                                     cover_image,
-                                     helmet,
-                                 }) => {
-    const PostContent = contentComponent || Content;
+export class BlogPostTemplate extends Component {
+    render() {
+        let {
+            content,
+            contentComponent,
+            description,
+            tags,
+            title,
+            cover_image,
+            helmet,
+        } = this.props;
+        const PostContent = contentComponent || Content;
 
-    return (
-        <div>
-            <Box as="header">
-                {helmet || ''}
-                <Hero cover_image={cover_image}
-                      title={title}
-                      description={description}/>
-            </Box>
+        return (
+            <div>
+                <Box as="header">
+                    {helmet || ''}
+                    <Hero cover_image={cover_image}
+                          title={title}
+                          description={description}
+                          height={500}/>
+                </Box>
 
-            <PostContent content={content}/>
+                <PostContent content={content}/>
 
-            <Tags as="section">
-                {tags && tags.length ? (
-                    <Box>
-                        <h4>Tags</h4>
-                        <ul>
-                            {tags.map(tag => (
-                                <li key={tag + `tag`}>
-                                    <Link
-                                        to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </Box>
-                ) : null}
-            </Tags>
-        </div>
-    )
-};
+                <Tags as="section">
+                    {tags && tags.length ? (
+                        <Box>
+                            <h4>Tags</h4>
+                            <ul>
+                                {tags.map(tag => (
+                                    <li key={tag + `tag`}>
+                                        <Link
+                                            to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </Box>
+                    ) : null}
+                </Tags>
+            </div>
+        )
+    }
+}
 
 BlogPostTemplate.propTypes = {
     content: PropTypes.node.isRequired,

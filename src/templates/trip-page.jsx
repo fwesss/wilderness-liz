@@ -1,12 +1,12 @@
-import React from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {kebabCase} from 'lodash'
 import Helmet from 'react-helmet'
 import {graphql, Link} from 'gatsby'
 import Layout from '../components/Layout'
 import Content, {HTMLContent} from '../components/Content'
-import {Box} from "mineral-ui";
-import Hero from "../components/Hero";
+import {Box, Text} from "mineral-ui";
+import BackgroundImage from "gatsby-background-image";
 import styled from "@emotion/styled";
 
 
@@ -14,46 +14,49 @@ const Tags = styled(Box)({
     padding: "32px",
 });
 
-export const TripPostTemplate = ({
-                                     content,
-                                     contentComponent,
-                                     description,
-                                     tags,
-                                     title,
-                                     cover_image,
-                                     helmet,
-                                 }) => {
-    const PostContent = contentComponent || Content;
+export class TripPostTemplate extends Component {
+    render() {
+        let {
+            content,
+            contentComponent,
+            description,
+            tags,
+            title,
+            cover_image,
+            helmet,
+        } = this.props;
+        const PostContent = contentComponent || Content;
 
-    return (
-        <div>
-            <Box as="header">
-                {helmet || ''}
-                <Hero cover_image={cover_image}
-                      title={title}
-                      description={description}/>
-            </Box>
+        return (
+            <div>
+                <Box as="header">
+                    {helmet || ''}
+                    <BackgroundImage fluid={cover_image}>
+                        <Text as="h1" align="center">{title}</Text>
+                    </BackgroundImage>
+                </Box>
 
-            <PostContent content={content}/>
+                <PostContent content={content}/>
 
-            <Tags as="section">
-                {tags && tags.length ? (
-                    <Box>
-                        <h4>Tags</h4>
-                        <ul>
-                            {tags.map(tag => (
-                                <li key={tag + `tag`}>
-                                    <Link
-                                        to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </Box>
-                ) : null}
-            </Tags>
-        </div>
-    )
-};
+                <Tags as="section">
+                    {tags && tags.length ? (
+                        <Box>
+                            <h4>Tags</h4>
+                            <ul>
+                                {tags.map(tag => (
+                                    <li key={tag + `tag`}>
+                                        <Link
+                                            to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </Box>
+                    ) : null}
+                </Tags>
+            </div>
+        )
+    }
+}
 
 TripPostTemplate.propTypes = {
     content: PropTypes.node.isRequired,
