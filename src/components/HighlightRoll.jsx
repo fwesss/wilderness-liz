@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {graphql, Link, StaticQuery} from 'gatsby'
 import {Grid, GridItem, Flex, FlexItem} from "mineral-ui";
-import Hero from "./Hero";
+import Highlight from "./Highlight";
 import styled from "@emotion/styled";
 
 const GridPadBox = styled(GridItem)`
@@ -56,7 +56,7 @@ class HighlightRoll extends React.Component {
                                 span={[5, 3]}>
                         <GridItem as={Link}
                                   to={post.fields.slug}>
-                            <Hero
+                            <Highlight
                                 cover_image={post.frontmatter.cover_image.childImageSharp.fluid}
                                 description={post.excerpt}
                                 title={post.frontmatter.title}
@@ -72,7 +72,7 @@ class HighlightRoll extends React.Component {
                                 <HighlightFlexItem key={post.id}
                                                    as={Link}
                                                    to={post.fields.slug}>
-                                    <Hero
+                                    <Highlight
                                         cover_image={post.frontmatter.cover_image.childImageSharp.fluid}
                                         description={post.excerpt}
                                         title={post.frontmatter.title}

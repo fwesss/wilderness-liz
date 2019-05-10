@@ -6,8 +6,8 @@ import {graphql, Link} from 'gatsby'
 import Layout from '../components/Layout'
 import Content, {HTMLContent} from '../components/Content'
 import {Box} from "mineral-ui";
-import Hero from "../components/Hero";
 import styled from "@emotion/styled";
+import Hero from "../components/Hero";
 
 const Tags = styled(Box)({
     padding: "32px",
@@ -31,9 +31,9 @@ export class BlogPostTemplate extends Component {
                 <Box as="header">
                     {helmet || ''}
                     <Hero cover_image={cover_image}
-                          title={title}
-                          description={description}
-                          height={500}/>
+                               title={title}
+                               description={description}
+                               height={500}/>
                 </Box>
 
                 <PostContent content={content}/>

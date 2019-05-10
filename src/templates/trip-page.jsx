@@ -6,8 +6,8 @@ import {graphql, Link} from 'gatsby'
 import Layout from '../components/Layout'
 import Content, {HTMLContent} from '../components/Content'
 import {Box, Text} from "mineral-ui";
-import BackgroundImage from "gatsby-background-image";
 import styled from "@emotion/styled";
+import Hero from "../components/Hero";
 
 
 const Tags = styled(Box)({
@@ -31,9 +31,10 @@ export class TripPostTemplate extends Component {
             <div>
                 <Box as="header">
                     {helmet || ''}
-                    <BackgroundImage fluid={cover_image}>
-                        <Text as="h1" align="center">{title}</Text>
-                    </BackgroundImage>
+                    <Hero cover_image={cover_image}
+                          title={title}
+                          description={description}
+                          height={500}/>
                 </Box>
 
                 <PostContent content={content}/>
