@@ -5,14 +5,13 @@ import Helmet from 'react-helmet'
 import {graphql, Link} from 'gatsby'
 import Layout from '../components/Layout'
 import Content, {HTMLContent} from '../components/Content'
-import {Box, Text} from "mineral-ui";
+import {Box} from "mineral-ui";
 import styled from "@emotion/styled";
 import Hero from "../components/Hero";
 
-
-const Tags = styled(Box)({
-    padding: "32px",
-});
+const Tags = styled(Box)`
+    padding: 32px;
+`;
 
 export class TripPostTemplate extends Component {
     render() {
@@ -66,6 +65,7 @@ TripPostTemplate.propTypes = {
     title: PropTypes.string,
     cover_image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     helmet: PropTypes.object,
+    tags: PropTypes.array
 };
 
 const TripPost = ({data}) => {

@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import {graphql, Link, StaticQuery} from 'gatsby'
+import * as React from "react";
+import PropTypes from 'prop-types';
+import {graphql, Link, StaticQuery} from 'gatsby';
 import {Grid, GridItem, Flex, FlexItem} from "mineral-ui";
 import Highlight from "./Highlight";
 import styled from "@emotion/styled";
@@ -27,7 +27,7 @@ const GridPadBox = styled(GridItem)`
     }
 `;
 
-const HighlightFlexItem = styled(FlexItem)`
+const HighlightLink = styled(FlexItem)`
     &:last-child {
         margin-top: 20px;
     }
@@ -37,6 +37,25 @@ const HighlightFlexItem = styled(FlexItem)`
             margin-top: 20px;
         }
     }
+    
+    @media (hover: hover) {
+        &:hover p {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+            transition-delay: 0.15s;
+        }
+        &:hover div {
+            opacity: 0.4;
+            transform: scale3d(1.1, 1.1, 1);
+        }
+    }
+`;
+
+const HighlightGrid = styled(Grid)`
+    position: relative;
+    margin: 0 auto;
+    padding: 1em 0 4em;
+    text-align: center;
 `;
 
 class HighlightRoll extends React.Component {
@@ -45,23 +64,22 @@ class HighlightRoll extends React.Component {
         const {edges: posts} = data.allMarkdownRemark;
 
         return (
-            <Grid className="grid" d
-                  columns={5}
-                  breakpoints={[1000]}
-                  marginBottom="2vw"
-                  gutterWidth={0}>
+            <HighlightGrid columns={5}
+                           breakpoints={[1000]}
+                           marginBottom="2vw"
+                           gutterWidth={0}>
                 {posts &&
                 posts.slice(0, 1).map(({node: post}) => (
                     <GridPadBox key={post.id}
                                 span={[5, 3]}>
-                        <GridItem as={Link}
-                                  to={post.fields.slug}>
+                        <HighlightLink as={Link}
+                                       to={post.fields.slug}>
                             <Highlight
                                 cover_image={post.frontmatter.cover_image.childImageSharp.fluid}
-                                description={post.excerpt}
+                                description={post.frontmatter.description}
                                 title={post.frontmatter.title}
                                 height={520}/>
-                        </GridItem>
+                        </HighlightLink>
                     </GridPadBox>
                 ))}
                 <GridPadBox>
@@ -69,20 +87,20 @@ class HighlightRoll extends React.Component {
                         <Flex direction="column">
                             {posts &&
                             posts.slice(1, 3).map(({node: post}) => (
-                                <HighlightFlexItem key={post.id}
-                                                   as={Link}
-                                                   to={post.fields.slug}>
+                                <HighlightLink key={post.id}
+                                               as={Link}
+                                               to={post.fields.slug}>
                                     <Highlight
                                         cover_image={post.frontmatter.cover_image.childImageSharp.fluid}
-                                        description={post.excerpt}
+                                        description={post.frontmatter.description}
                                         title={post.frontmatter.title}
                                         height={240}/>
-                                </HighlightFlexItem>
+                                </HighlightLink>
                             ))}
                         </Flex>
                     </GridItem>
                 </GridPadBox>
-            </Grid>
+            </HighlightGrid>
         )
     }
 }
@@ -106,13 +124,13 @@ export default () => (
         ) {
           edges {
             node {
-              excerpt(pruneLength: 400)
               id
               fields {
                 slug
               }
               frontmatter {
                 title
+                description
                 templateKey
                 date(formatString: "MMMM DD, YYYY")
                 cover_image {

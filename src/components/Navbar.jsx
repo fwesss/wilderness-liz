@@ -1,7 +1,9 @@
+/** @jsx jsx */
+import {jsx} from '@emotion/core'
 import React from "react";
 import {Link} from "gatsby";
 import {Box, Text, NavItem, PrimaryNav} from "mineral-ui";
-import {stack as Menu} from 'react-burger-menu';
+import {pushRotate as Menu} from 'react-burger-menu';
 import styled from "@emotion/styled";
 import {
     MdForum,
@@ -11,6 +13,7 @@ import {
     MdRestaurant
 } from "react-icons/md";
 import withSizes from "react-sizes";
+import colors from "../utils/colors";
 
 const BurgerStyles = {
     bmBurgerButton: {
@@ -20,41 +23,45 @@ const BurgerStyles = {
         left: '5vw',
         top: '3vw',
     },
+
     bmBurgerBars: {
-        background: '#3B3B3B'
+        background: colors.gray[8]
     },
-    bmBurgerBarsHover: {
-        background: '#a90000'
-    },
+
     bmCrossButton: {
         height: '24px',
         width: '24px'
     },
+
     bmCross: {
-        background: '#002A2A'
+        background: colors.gray[9]
     },
+
     bmMenuWrap: {
         position: 'fixed',
         height: '100%'
     },
+
     bmMenu: {
-        background: '#A1B5B2',
-        opacity: '0.95',
+        background: colors.brand,
         padding: '2.5em 0',
         fontSize: '1.15em'
     },
+
     bmMorphShape: {
-        fill: '#A1B5B2',
-        opacity: '0.95',
+        fill: colors.brand,
     },
+
     bmItemList: {
         padding: '0.8em 0'
     },
+
     bmItem: {
         display: 'inline-block'
     },
+
     bmOverlay: {
-        background: 'rgba(0, 0, 0, 0.3)'
+        background: 'rgba(59, 64, 63, 0.3)'
     }
 };
 
@@ -67,16 +74,12 @@ const MobileNavItem = styled(NavItem)`
 const MobilePrimaryNav = styled(PrimaryNav)`
     width: 300px;
     background: transparent;
-    color: #002A2A;
 `;
 
 const DesktopNavItem = styled(NavItem)`
-    font-size: 1.5em;
+    font-size: 1.4em;
     @media only screen and (max-width: 808px) {
-        font-size: 2.75vw;
-    }
-    @media only screen and (max-width: 708px) {
-        font-size: 2.9vw;
+        font-size: 2.65vw;
     }
 `;
 
@@ -91,7 +94,7 @@ const MobileHeader = styled(Box)`
     top: 0;
     position: sticky;
     z-index: 1000;
-    background-color: #FFFFFF;
+    background-color: ${colors.white};
     width: 100%;
     text-align: center;
 `;
@@ -131,21 +134,20 @@ class Navbar extends React.Component {
                         <MobilePrimaryNav minimal
                                           itemAs={Link}
                                           role="navigation"
-                                          aria-label="main-navigation"
-                        >
-                            <MobileNavItem to="/">
+                                          aria-label="main-navigation">
+                            <MobileNavItem maxWidth="10em" to="/">
                                 <MdHome/> Home
                             </MobileNavItem>
-                            <MobileNavItem to="/about">
+                            <MobileNavItem maxWidth="10em" to="/about">
                                 <MdRestaurant/> Food Guides
                             </MobileNavItem>
-                            <MobileNavItem to="/trips">
+                            <MobileNavItem maxWidth="10em" to="/trips">
                                 <MdLandscape/> Trips
                             </MobileNavItem>
-                            <MobileNavItem to="/blog">
+                            <MobileNavItem maxWidth="10em" to="/blog">
                                 <MdLaptopMac/> Blog
                             </MobileNavItem>
-                            <MobileNavItem to="/contact">
+                            <MobileNavItem maxWidth="10em" to="/contact">
                                 <MdForum/> Contact
                             </MobileNavItem>
                         </MobilePrimaryNav>
@@ -157,19 +159,19 @@ class Navbar extends React.Component {
                                            role="navigation"
                                            aria-label="main-navigation"
                         >
-                            <DesktopNavItem to="/">
+                            <DesktopNavItem maxWidth="10em" to="/">
                                 <MdHome/> Home
                             </DesktopNavItem>
-                            <DesktopNavItem to="/about">
+                            <DesktopNavItem maxWidth="10em" to="/about">
                                 <MdRestaurant/> Food Guides
                             </DesktopNavItem>
-                            <DesktopNavItem to="/trips">
+                            <DesktopNavItem maxWidth="10em" to="/trips">
                                 <MdLandscape/> Trips
                             </DesktopNavItem>
-                            <DesktopNavItem to="/blog">
+                            <DesktopNavItem maxWidth="10em" to="/blog">
                                 <MdLaptopMac/> Blog
                             </DesktopNavItem>
-                            <DesktopNavItem to="/contact">
+                            <DesktopNavItem maxWidth="10em" to="/contact">
                                 <MdForum/> Contact
                             </DesktopNavItem>
                         </DesktopPrimaryNav>

@@ -1,6 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {Link, graphql, StaticQuery} from 'gatsby'
+import {
+    Button, Card,
+    CardActions,
+    CardBlock, CardFooter,
+    CardImage,
+    CardTitle, Flex, FlexItem
+} from "mineral-ui";
+import Img from "gatsby-image";
+import styled from "@emotion/styled";
+
+const MyCard = styled(Card)`
+    min-width: 290px;
+`;
+
+const MyFlexItem = styled(FlexItem)`
+    flex: 1 0 0;
+    margin: 1em;
+`;
 
 class BlogRoll extends React.Component {
     render() {
@@ -8,35 +26,35 @@ class BlogRoll extends React.Component {
         const {edges: posts} = data.allMarkdownRemark;
 
         return (
-            <div className="columns is-multiline">
+            <Flex wrap
+                  id="roll-container">
                 {posts &&
                 posts.map(({node: post}) => (
-                    <div className="is-parent column is-6" key={post.id}>
-                        <article className="tile is-child box notification">
-                            <p>
-                                <Link
-                                    className="title has-text-primary is-size-4"
-                                    to={post.fields.slug}
-                                >
+                    <MyFlexItem key={post.id}>
+                        <MyCard as="article">
+                            <Link to={post.fields.slug}>
+                                <CardImage as={Img}
+                                           fluid={post.frontmatter.cover_image.childImageSharp.fluid}/>
+                            </Link>
+                            <CardTitle>
+                                <Link to={post.fields.slug}>
                                     {post.frontmatter.title}
                                 </Link>
-                                <span> &bull; </span>
-                                <span className="subtitle is-size-5 is-block">
-                    {post.frontmatter.date}
-                  </span>
-                            </p>
-                            <p>
-                                {post.excerpt}
-                                <br/>
-                                <br/>
-                                <Link className="button" to={post.fields.slug}>
+                            </CardTitle>
+                            <CardBlock>
+                                {post.frontmatter.description}
+                            </CardBlock>
+                            <CardActions>
+                                <Button minimal as={Link}
+                                        to={post.fields.slug}>
                                     Keep Reading →
-                                </Link>
-                            </p>
-                        </article>
-                    </div>
+                                </Button>
+                            </CardActions>
+                            <CardFooter title={post.frontmatter.date}/>
+                        </MyCard>
+                    </MyFlexItem>
                 ))}
-            </div>
+            </Flex>
         )
     }
 }
@@ -59,15 +77,22 @@ export default () => (
         ) {
           edges {
             node {
-              excerpt(pruneLength: 400)
               id
               fields {
                 slug
               }
               frontmatter {
                 title
+                description
                 templateKey
                 date(formatString: "MMMM DD, YYYY")
+                cover_image {
+                    childImageSharp {
+                        fluid(maxWidth: 2080) {
+                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                        }
+                    }
+                }
               }
             }
           }

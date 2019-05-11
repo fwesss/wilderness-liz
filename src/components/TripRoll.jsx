@@ -11,14 +11,14 @@ import {
 } from "mineral-ui";
 import styled from "@emotion/styled";
 
-const MyCard = styled(Card)({
-    minWidth: "290px"
-});
+const MyCard = styled(Card)`
+    min-width: 290px;
+`;
 
-const MyFlexItem = styled(FlexItem)({
-    flexGrow: "1",
-    margin: "1em"
-});
+const MyFlexItem = styled(FlexItem)`
+    flex: 1 0 0;
+    margin: 1em;
+`;
 
 class TripRoll extends React.Component {
     render() {
@@ -27,19 +27,22 @@ class TripRoll extends React.Component {
 
         return (
             <Flex wrap
-                  id="roll-container"
-            >
+                  id="roll-container">
                 {posts &&
                 posts.map(({node: post}) => (
                     <MyFlexItem key={post.id}>
                         <MyCard as="article">
-                            <CardImage as={Img}
-                                       fluid={post.frontmatter.cover_image.childImageSharp.fluid}/>
-                            <CardTitle as={Link} to={post.fields.slug}>
-                                {post.frontmatter.title}
+                            <Link to={post.fields.slug}>
+                                <CardImage as={Img}
+                                           fluid={post.frontmatter.cover_image.childImageSharp.fluid}/>
+                            </Link>
+                            <CardTitle>
+                                <Link to={post.fields.slug}>
+                                    {post.frontmatter.title}
+                                </Link>
                             </CardTitle>
                             <CardBlock>
-                                {post.excerpt}
+                                {post.frontmatter.description}
                             </CardBlock>
                             <CardActions>
                                 <Button minimal as={Link}
@@ -74,13 +77,13 @@ export default () => (
         ) {
           edges {
             node {
-              excerpt(pruneLength: 400)
               id
               fields {
                 slug
               }
               frontmatter {
                 title
+                description
                 templateKey
                 date(formatString: "MMMM DD, YYYY")
                 cover_image {

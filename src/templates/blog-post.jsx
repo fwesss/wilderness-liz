@@ -65,6 +65,7 @@ BlogPostTemplate.propTypes = {
     title: PropTypes.string,
     cover_image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     helmet: PropTypes.object,
+    tags: PropTypes.array
 };
 
 const BlogPost = ({data}) => {

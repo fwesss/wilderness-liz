@@ -4,6 +4,7 @@ import {Flex, FlexItem, Text} from "mineral-ui";
 import BackgroundImage from "gatsby-background-image";
 import styled from "@emotion/styled";
 import * as PropTypes from "prop-types";
+import colors from "../utils/colors"
 
 const Description = styled(Text)`
     font-size: 18px;
@@ -13,7 +14,7 @@ const Description = styled(Text)`
 const DescriptionBox = styled(FlexItem)`
     margin: 32px;
     padding: 32px;
-    background-color: #A1B5B2;
+    background-color: ${colors.brand};
     opacity: 0.85;
     border-radius: 4px;
     align-self: center;
@@ -25,7 +26,7 @@ class Hero extends React.Component {
         let {cover_image, title, description, height} = this.props;
         return (
             <BackgroundImage fluid={cover_image}
-                             backgroundColor={`#A1B5B2`}
+                             backgroundColor={colors.brand}
             >
                 <Flex justifyContent="evenly"
                       direction="row"
