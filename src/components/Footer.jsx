@@ -20,7 +20,7 @@ const SocialLink = styled(Link)`
     font-size: 3em;
 `;
 
-const Footer = class extends React.Component {
+class Footer extends React.Component {
     render() {
         return (
             <Box as="footer" padding="lg">
@@ -44,16 +44,23 @@ const Footer = class extends React.Component {
                         </Menu>
                     </GridItem>
                     <GridItem>
-                        <SocialLink name="Facebook" href="https://facebook.com">
+                        <SocialLink name="Facebook"
+                                    href="https://facebook.com"
+                                    aria-label="Facebook">
                             <FaFacebook/>
                         </SocialLink>
-                        <SocialLink name="Twitter" href="https://twitter.com">
+                        <SocialLink name="Twitter"
+                                    href="https://twitter.com"
+                                    aria-label="Twitter">
                             <FaTwitterSquare/>
                         </SocialLink>
-                        <SocialLink name="Instagram" href="https://instagram.com">
+                        <SocialLink name="Instagram"
+                                    href="https://instagram.com"
+                                    aria-label="Instagram">
                             <FaInstagram/>
                         </SocialLink>
-                        <SocialLink name="Vimeo" href="https://vimeo.com">
+                        <SocialLink name="Vimeo" href="https://vimeo.com"
+                                    aria-label="Vimeo">
                             <FaVimeoSquare/>
                         </SocialLink>
                     </GridItem>
@@ -61,6 +68,6 @@ const Footer = class extends React.Component {
             </Box>
         )
     }
-};
+}
 
 export default Footer

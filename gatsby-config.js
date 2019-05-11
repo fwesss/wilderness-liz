@@ -102,7 +102,6 @@ module.exports = {
                 develop: true, // Activates purging in npm run develop
                 printRejected: true,
                 whitelistPatterns: [/^slick/],
-
             },
         }, // must be after other CSS plugins
         {
