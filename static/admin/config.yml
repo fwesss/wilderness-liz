@@ -6,7 +6,7 @@ media_folder: static/img
 public_folder: /img
 
 site_url: https://wildernessliz.com
-logo_url: https://wildernessliz.com/static/logo-white-bc538ef8cd5367046e36e104547121f4.jpg
+logo_url: https://wildernessliz.com/img/logo-white.jpg
 
 publish_mode: editorial_workflow
 
