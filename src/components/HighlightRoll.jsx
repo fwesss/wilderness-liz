@@ -54,7 +54,7 @@ const HighlightLink = styled(FlexItem)`
 const HighlightGrid = styled(Grid)`
     position: relative;
     margin: 0 auto;
-    padding: 1em 0 4em;
+    padding: 1vh 0 1vh;
     text-align: center;
 `;
 
@@ -66,7 +66,6 @@ class HighlightRoll extends React.Component {
         return (
             <HighlightGrid columns={5}
                            breakpoints={[1000]}
-                           marginBottom="2vw"
                            gutterWidth={0}>
                 {posts &&
                 posts.slice(0, 1).map(({node: post}) => (

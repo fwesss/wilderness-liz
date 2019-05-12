@@ -26,8 +26,7 @@ class Hero extends React.Component {
         let {cover_image, title, description, height} = this.props;
         return (
             <BackgroundImage fluid={cover_image}
-                             backgroundColor={colors.brand}
-            >
+                             backgroundColor={colors.brand}>
                 <Flex justifyContent="evenly"
                       direction="row"
                       height={height}

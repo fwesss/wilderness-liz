@@ -7,6 +7,8 @@ import "slick-carousel/slick/slick-theme.css"
 
 import {useStaticQuery, graphql} from 'gatsby'
 import colors from "../utils/colors";
+import {Box, Grid, GridItem, Text} from "mineral-ui";
+
 
 function InstagramCarousel() {
     const {allFile} = useStaticQuery(
@@ -44,46 +46,41 @@ function InstagramCarousel() {
     });
 
     const settings = {
+        vertical: true,
         dots: false,
         arrows: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 8,
-        slidesToScroll: 8,
+        slidesToShow: 4,
+        slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 4000,
         pauseOnFocus: true,
         pauseOnHover: true,
         lazyLoad: 'progressive',
-        responsive: [
-            {
-                breakpoint: 1920,
-                settings: {
-                    slidesToShow: 6,
-                    slidesToScroll: 6,
-                }
-            },
-            {
-                breakpoint: 1280,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4
-                }
-            },
-            {
-                breakpoint: 640,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                }
-            }
-        ]
     };
 
     return (
-        <Slider {...settings}>
-            {images}
-        </Slider>
+        <Box>
+            <Text align="center"
+                  as="h2">
+                Instagram
+            </Text>
+            <Grid gutterWidth={0}
+                  columns={2}
+                  breakpoints={[1000]}>
+                <GridItem span={[2, 1]}>
+                    <Slider {...settings}>
+                        {images.splice(0, Math.ceil(images.length / 2))}
+                    </Slider>
+                </GridItem>
+                <GridItem span={[2, 1]}>
+                    <Slider {...settings}>
+                        {images.reverse().splice(0, Math.ceil(images.length / 2))}
+                    </Slider>
+                </GridItem>
+            </Grid>
+        </Box>
     )
 }
 

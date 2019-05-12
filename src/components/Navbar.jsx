@@ -157,8 +157,7 @@ class Navbar extends React.Component {
                         <DesktopPrimaryNav minimal
                                            itemAs={Link}
                                            role="navigation"
-                                           aria-label="main-navigation"
-                        >
+                                           aria-label="main-navigation">
                             <DesktopNavItem maxWidth="10em" to="/">
                                 <MdHome/> Home
                             </DesktopNavItem>
