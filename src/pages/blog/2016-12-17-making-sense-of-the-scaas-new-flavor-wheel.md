@@ -1,10 +1,16 @@
 ---
 templateKey: blog-post
 title: Making sense of the SCAA’s new Flavor Wheel
+<<<<<<< HEAD
 coverImage: >-
   /img/blog-index.jpg
+=======
+cover_image: /img/jumbotron.jpg
+>>>>>>> ea40f876d2b677d0deed4033ad6b4e2b0443d6c4
 date: 2016-12-17T15:04:10.000Z
-description: The Coffee Taster’s Flavor Wheel, the official resource used by coffee tasters, has been revised for the first time this year.
+description: >-
+  The Coffee Taster’s Flavor Wheel, the official resource used by coffee
+  tasters, has been revised for the first time this year.
 tags:
   - flavor
   - tasting

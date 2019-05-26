@@ -1,8 +1,12 @@
 ---
-templateKey: 'blog-post'
+templateKey: blog-post
 title: 'Just in: small batch of Jamaican Blue Mountain in store next week'
+<<<<<<< HEAD
 coverImage: >-
   /img/blog-index.jpg
+=======
+cover_image: /img/sierra.jpg
+>>>>>>> ea40f876d2b677d0deed4033ad6b4e2b0443d6c4
 date: 2017-01-04T15:04:10.000Z
 description: >-
   We’re proud to announce that we’ll be offering a small batch of Jamaica Blue
