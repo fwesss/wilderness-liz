@@ -8,7 +8,7 @@ const TripPostPreview = ({entry, widgetFor}) => (
         description={entry.getIn(['data', 'description'])}
         tags={entry.getIn(['data', 'tags'])}
         title={entry.getIn(['data', 'title'])}
-        cover_image={entry.getIn(['data', 'cover_image'])}
+        coverImage={entry.getIn(['data', 'coverImage'])}
     />
 );
 

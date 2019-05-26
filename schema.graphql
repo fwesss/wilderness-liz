@@ -485,7 +485,7 @@ type MarkdownRemarkFields {
 }
 
 type MarkdownRemarkFrontmatter {
-    cover_image: File
+    coverImage: File
     date(
         #Returns the difference between this date and the current time. Defaults to \"miliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\".
         difference: String,
@@ -744,27 +744,31 @@ type SitePluginPackageJsonPeerDependencies {
 }
 
 type SitePluginPluginOptions {
+    allExtensions: Boolean
+    backgroundColor: String
     background_color: String
     cmsConfig: String
     destinationDir: String
     develop: Boolean
     display: String
-    google: SitePluginPluginOptionsGoogle
     icon: String
+    isTSX: Boolean
+    jsxPragma: String
     maxWidth: Int
     modulePath: String
     name: String
     path: String
     pathCheck: Boolean
+    pathToConfigModule: String
     plugins: [SitePluginPluginOptionsPlugins]
-    purgeOnly: [String]
+    printRejected: Boolean
+    quality: Int
     short_name: String
+    showCaptions: Boolean
     start_url: String
     theme_color: String
-}
-
-type SitePluginPluginOptionsGoogle {
-    families: [String]
+    tracedSVG: Boolean
+    withWebp: Boolean
 }
 
 type SitePluginPluginOptionsPlugins {
@@ -779,9 +783,14 @@ type SitePluginPluginOptionsPlugins {
 }
 
 type SitePluginPluginOptionsPluginsPluginOptions {
+    backgroundColor: String
     destinationDir: String
     maxWidth: Int
     name: String
+    quality: Int
+    showCaptions: Boolean
+    tracedSVG: Boolean
+    withWebp: Boolean
 }
 
 type SiteSiteMetadata {
@@ -1261,54 +1270,54 @@ enum MarkdownRemarkFieldsEnum {
     excerptAst
     fields___slug
     fileAbsolutePath
-    frontmatter___cover_image___absolutePath
-    frontmatter___cover_image___accessTime
-    frontmatter___cover_image___atime
-    frontmatter___cover_image___atimeMs
-    frontmatter___cover_image___base
-    frontmatter___cover_image___birthTime
-    frontmatter___cover_image___birthtime
-    frontmatter___cover_image___birthtimeMs
-    frontmatter___cover_image___blksize
-    frontmatter___cover_image___blocks
-    frontmatter___cover_image___changeTime
-    frontmatter___cover_image___children
-    frontmatter___cover_image___children___children
-    frontmatter___cover_image___children___id
-    frontmatter___cover_image___ctime
-    frontmatter___cover_image___ctimeMs
-    frontmatter___cover_image___dev
-    frontmatter___cover_image___dir
-    frontmatter___cover_image___ext
-    frontmatter___cover_image___extension
-    frontmatter___cover_image___gid
-    frontmatter___cover_image___id
-    frontmatter___cover_image___ino
-    frontmatter___cover_image___internal___content
-    frontmatter___cover_image___internal___contentDigest
-    frontmatter___cover_image___internal___description
-    frontmatter___cover_image___internal___fieldOwners
-    frontmatter___cover_image___internal___ignoreType
-    frontmatter___cover_image___internal___mediaType
-    frontmatter___cover_image___internal___owner
-    frontmatter___cover_image___internal___type
-    frontmatter___cover_image___mode
-    frontmatter___cover_image___modifiedTime
-    frontmatter___cover_image___mtime
-    frontmatter___cover_image___mtimeMs
-    frontmatter___cover_image___name
-    frontmatter___cover_image___nlink
-    frontmatter___cover_image___parent___children
-    frontmatter___cover_image___parent___id
-    frontmatter___cover_image___prettySize
-    frontmatter___cover_image___publicURL
-    frontmatter___cover_image___rdev
-    frontmatter___cover_image___relativeDirectory
-    frontmatter___cover_image___relativePath
-    frontmatter___cover_image___root
-    frontmatter___cover_image___size
-    frontmatter___cover_image___sourceInstanceName
-    frontmatter___cover_image___uid
+    frontmatter___coverImage___absolutePath
+    frontmatter___coverImage___accessTime
+    frontmatter___coverImage___atime
+    frontmatter___coverImage___atimeMs
+    frontmatter___coverImage___base
+    frontmatter___coverImage___birthTime
+    frontmatter___coverImage___birthtime
+    frontmatter___coverImage___birthtimeMs
+    frontmatter___coverImage___blksize
+    frontmatter___coverImage___blocks
+    frontmatter___coverImage___changeTime
+    frontmatter___coverImage___children
+    frontmatter___coverImage___children___children
+    frontmatter___coverImage___children___id
+    frontmatter___coverImage___ctime
+    frontmatter___coverImage___ctimeMs
+    frontmatter___coverImage___dev
+    frontmatter___coverImage___dir
+    frontmatter___coverImage___ext
+    frontmatter___coverImage___extension
+    frontmatter___coverImage___gid
+    frontmatter___coverImage___id
+    frontmatter___coverImage___ino
+    frontmatter___coverImage___internal___content
+    frontmatter___coverImage___internal___contentDigest
+    frontmatter___coverImage___internal___description
+    frontmatter___coverImage___internal___fieldOwners
+    frontmatter___coverImage___internal___ignoreType
+    frontmatter___coverImage___internal___mediaType
+    frontmatter___coverImage___internal___owner
+    frontmatter___coverImage___internal___type
+    frontmatter___coverImage___mode
+    frontmatter___coverImage___modifiedTime
+    frontmatter___coverImage___mtime
+    frontmatter___coverImage___mtimeMs
+    frontmatter___coverImage___name
+    frontmatter___coverImage___nlink
+    frontmatter___coverImage___parent___children
+    frontmatter___coverImage___parent___id
+    frontmatter___coverImage___prettySize
+    frontmatter___coverImage___publicURL
+    frontmatter___coverImage___rdev
+    frontmatter___coverImage___relativeDirectory
+    frontmatter___coverImage___relativePath
+    frontmatter___coverImage___root
+    frontmatter___coverImage___size
+    frontmatter___coverImage___sourceInstanceName
+    frontmatter___coverImage___uid
     frontmatter___date
     frontmatter___description
     frontmatter___heading
@@ -1696,18 +1705,22 @@ enum SitePageFieldsEnum {
     pluginCreator___parent___parent___children
     pluginCreator___parent___parent___id
     pluginCreator___pluginFilepath
+    pluginCreator___pluginOptions___allExtensions
+    pluginCreator___pluginOptions___backgroundColor
     pluginCreator___pluginOptions___background_color
     pluginCreator___pluginOptions___cmsConfig
     pluginCreator___pluginOptions___destinationDir
     pluginCreator___pluginOptions___develop
     pluginCreator___pluginOptions___display
-    pluginCreator___pluginOptions___google___families
     pluginCreator___pluginOptions___icon
+    pluginCreator___pluginOptions___isTSX
+    pluginCreator___pluginOptions___jsxPragma
     pluginCreator___pluginOptions___maxWidth
     pluginCreator___pluginOptions___modulePath
     pluginCreator___pluginOptions___name
     pluginCreator___pluginOptions___path
     pluginCreator___pluginOptions___pathCheck
+    pluginCreator___pluginOptions___pathToConfigModule
     pluginCreator___pluginOptions___plugins
     pluginCreator___pluginOptions___plugins___browserAPIs
     pluginCreator___pluginOptions___plugins___id
@@ -1716,10 +1729,14 @@ enum SitePageFieldsEnum {
     pluginCreator___pluginOptions___plugins___pluginFilepath
     pluginCreator___pluginOptions___plugins___resolve
     pluginCreator___pluginOptions___plugins___version
-    pluginCreator___pluginOptions___purgeOnly
+    pluginCreator___pluginOptions___printRejected
+    pluginCreator___pluginOptions___quality
     pluginCreator___pluginOptions___short_name
+    pluginCreator___pluginOptions___showCaptions
     pluginCreator___pluginOptions___start_url
     pluginCreator___pluginOptions___theme_color
+    pluginCreator___pluginOptions___tracedSVG
+    pluginCreator___pluginOptions___withWebp
     pluginCreator___resolve
     pluginCreator___ssrAPIs
     pluginCreator___version
@@ -1832,33 +1849,46 @@ enum SitePluginFieldsEnum {
     parent___parent___parent___children
     parent___parent___parent___id
     pluginFilepath
+    pluginOptions___allExtensions
+    pluginOptions___backgroundColor
     pluginOptions___background_color
     pluginOptions___cmsConfig
     pluginOptions___destinationDir
     pluginOptions___develop
     pluginOptions___display
-    pluginOptions___google___families
     pluginOptions___icon
+    pluginOptions___isTSX
+    pluginOptions___jsxPragma
     pluginOptions___maxWidth
     pluginOptions___modulePath
     pluginOptions___name
     pluginOptions___path
     pluginOptions___pathCheck
+    pluginOptions___pathToConfigModule
     pluginOptions___plugins
     pluginOptions___plugins___browserAPIs
     pluginOptions___plugins___id
     pluginOptions___plugins___name
     pluginOptions___plugins___nodeAPIs
     pluginOptions___plugins___pluginFilepath
+    pluginOptions___plugins___pluginOptions___backgroundColor
     pluginOptions___plugins___pluginOptions___destinationDir
     pluginOptions___plugins___pluginOptions___maxWidth
     pluginOptions___plugins___pluginOptions___name
+    pluginOptions___plugins___pluginOptions___quality
+    pluginOptions___plugins___pluginOptions___showCaptions
+    pluginOptions___plugins___pluginOptions___tracedSVG
+    pluginOptions___plugins___pluginOptions___withWebp
     pluginOptions___plugins___resolve
     pluginOptions___plugins___version
-    pluginOptions___purgeOnly
+    pluginOptions___printRejected
+    pluginOptions___quality
     pluginOptions___short_name
+    pluginOptions___showCaptions
     pluginOptions___start_url
     pluginOptions___theme_color
+    pluginOptions___tracedSVG
+    pluginOptions___withWebp
     resolve
     ssrAPIs
     version
@@ -2148,7 +2178,7 @@ input MarkdownRemarkFilterInput {
 }
 
 input MarkdownRemarkFrontmatterFilterInput {
-    cover_image: FileFilterInput
+    coverImage: FileFilterInput
     date: DateQueryOperatorInput
     description: StringQueryOperatorInput
     heading: StringQueryOperatorInput
@@ -2331,27 +2361,31 @@ input SitePluginPackageJsonPeerDependenciesFilterListInput {
 }
 
 input SitePluginPluginOptionsFilterInput {
+    allExtensions: BooleanQueryOperatorInput
+    backgroundColor: StringQueryOperatorInput
     background_color: StringQueryOperatorInput
     cmsConfig: StringQueryOperatorInput
     destinationDir: StringQueryOperatorInput
     develop: BooleanQueryOperatorInput
     display: StringQueryOperatorInput
-    google: SitePluginPluginOptionsGoogleFilterInput
     icon: StringQueryOperatorInput
+    isTSX: BooleanQueryOperatorInput
+    jsxPragma: StringQueryOperatorInput
     maxWidth: IntQueryOperatorInput
     modulePath: StringQueryOperatorInput
     name: StringQueryOperatorInput
     path: StringQueryOperatorInput
     pathCheck: BooleanQueryOperatorInput
+    pathToConfigModule: StringQueryOperatorInput
     plugins: SitePluginPluginOptionsPluginsFilterListInput
-    purgeOnly: StringQueryOperatorInput
+    printRejected: BooleanQueryOperatorInput
+    quality: IntQueryOperatorInput
     short_name: StringQueryOperatorInput
+    showCaptions: BooleanQueryOperatorInput
     start_url: StringQueryOperatorInput
     theme_color: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsGoogleFilterInput {
-    families: StringQueryOperatorInput
+    tracedSVG: BooleanQueryOperatorInput
+    withWebp: BooleanQueryOperatorInput
 }
 
 input SitePluginPluginOptionsPluginsFilterInput {
@@ -2370,9 +2404,14 @@ input SitePluginPluginOptionsPluginsFilterListInput {
 }
 
 input SitePluginPluginOptionsPluginsPluginOptionsFilterInput {
+    backgroundColor: StringQueryOperatorInput
     destinationDir: StringQueryOperatorInput
     maxWidth: IntQueryOperatorInput
     name: StringQueryOperatorInput
+    quality: IntQueryOperatorInput
+    showCaptions: BooleanQueryOperatorInput
+    tracedSVG: BooleanQueryOperatorInput
+    withWebp: BooleanQueryOperatorInput
 }
 
 input SitePluginSortInput {

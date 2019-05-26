@@ -1,10 +1,10 @@
-import * as React from "react";
-import PropTypes from "prop-types";
+import * as React from 'react';
+import PropTypes from 'prop-types';
 
-import {Text, Box} from "mineral-ui";
-import Img from "gatsby-image";
-import styled from "@emotion/styled";
-import colors from "../utils/colors";
+import { Box, Text } from 'mineral-ui';
+import Img from 'gatsby-image';
+import styled from '@emotion/styled';
+import { colors } from '../utils/colors';
 
 const HighlightFigure = styled(Box)`
     position: relative;
@@ -58,29 +58,33 @@ const HightlightDescription = styled(Text)`
     }
 `;
 
-export default class Highlight extends React.Component {
-    render() {
-        let {cover_image, title, description, height} = this.props;
-        return (
-            <HighlightFigure as="figure"
-                             height={height}>
-                <HighlightImg fluid={cover_image}/>
-                <HighlightCaption>
-                    <HighlightTitle as="h2">
-                        {title}
-                    </HighlightTitle>
-                    <HightlightDescription as="p">
-                        {description}
-                    </HightlightDescription>
-                </HighlightCaption>
-            </HighlightFigure>
-        );
-    }
+export default function Highlight(props) {
+  const {
+    coverImage, title, description, height,
+  } = props;
+  return (
+    <HighlightFigure
+      as="figure"
+      height={height}
+    >
+      <HighlightImg fluid={coverImage} />
+      <HighlightCaption>
+        <HighlightTitle as="h2">
+          {title}
+        </HighlightTitle>
+        <HightlightDescription as="p">
+          {description}
+        </HightlightDescription>
+      </HighlightCaption>
+    </HighlightFigure>
+  );
 }
 
 Highlight.propTypes = {
-    cover_image: PropTypes.object,
-    title: PropTypes.string,
-    description: PropTypes.string,
-    height: PropTypes.number
+  coverImage: PropTypes.shape({
+    requiredProperty: PropTypes.object,
+  }).isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  height: PropTypes.number.isRequired,
 };

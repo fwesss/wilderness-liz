@@ -1,10 +1,10 @@
-import * as React from "react";
-import PropTypes from "prop-types";
-import {Link} from "gatsby";
-import {Box, Text} from "mineral-ui";
-import Img from "gatsby-image";
-import styled from "@emotion/styled";
-import colors from "../utils/colors";
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
+import { Box, Text } from 'mineral-ui';
+import Img from 'gatsby-image';
+import styled from '@emotion/styled';
+import { colors } from '../utils/colors';
 
 const ContentThumbFigure = styled(Box)`
     position: relative;
@@ -44,43 +44,45 @@ const Trips = styled(Link)`
     color: ${colors.yellow[8]};
 `;
 
-export default class ContentThumb extends React.Component {
-    render() {
-        let {cover_image, title, description, link, content_type, date, height} = this.props;
-        return (
-            <ContentThumbFigure as="figure">
-                <ImgContainer height={height}>
-                    <Link to={link}>
-                        <ContentThumbImg fluid={cover_image}/>
-                    </Link>
-                </ImgContainer>
-                <ContentType as="h3">
-                    {content_type === "blog-post" ?
-                        <Blog to={"/blog"}>Blog</Blog> :
-                        <Trips to={"/trips"}>Trip</Trips>}
-                </ContentType>
-                <Text as="h2">
-                    <Link to={link}>
-                        {title}
-                    </Link>
-                </Text>
-                <Text appearance="mouse">
-                    {date}
-                </Text>
-                <Text>
-                    {description}
-                </Text>
-            </ContentThumbFigure>
-        );
-    }
+export default function ContentThumb(props) {
+  const {
+    coverImage, title, description, link, contentType, date, height,
+  } = props;
+  return (
+    <ContentThumbFigure as="figure">
+      <ImgContainer height={height}>
+        <Link to={link}>
+          <ContentThumbImg fluid={coverImage} />
+        </Link>
+      </ImgContainer>
+      <ContentType as="h3">
+        {contentType === 'blog-post'
+          ? <Blog to="/blog">Blog</Blog>
+          : <Trips to="/trips">Trip</Trips>}
+      </ContentType>
+      <Text as="h2">
+        <Link to={link}>
+          {title}
+        </Link>
+      </Text>
+      <Text appearance="mouse">
+        {date}
+      </Text>
+      <Text>
+        {description}
+      </Text>
+    </ContentThumbFigure>
+  );
 }
 
 ContentThumb.propTypes = {
-    cover_image: PropTypes.object,
-    title: PropTypes.string,
-    description: PropTypes.string,
-    height: PropTypes.number,
-    link: PropTypes.string,
-    content_type: PropTypes.string,
-    date: PropTypes.string
+  coverImage: PropTypes.shape({
+    requiredProperty: PropTypes.object,
+  }).isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  height: PropTypes.number.isRequired,
+  link: PropTypes.string.isRequired,
+  contentType: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
 };

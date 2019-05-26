@@ -1,5 +1,5 @@
 {
-  "name": "Untitled GraphQL Schema",
+  "name": "Wilderness Liz Schema",
   "schemaPath": "schema.graphql",
   "extensions": {
     "endpoints": {

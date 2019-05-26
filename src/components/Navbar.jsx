@@ -1,68 +1,70 @@
 /** @jsx jsx */
-import {jsx} from '@emotion/core'
-import React from "react";
-import {Link} from "gatsby";
-import {Box, Text, NavItem, PrimaryNav} from "mineral-ui";
-import {pushRotate as Menu} from 'react-burger-menu';
-import styled from "@emotion/styled";
+import { jsx } from '@emotion/core';
+import React from 'react';
+import { Link } from 'gatsby';
 import {
-    MdForum,
-    MdHome,
-    MdLandscape,
-    MdLaptopMac,
-    MdRestaurant
-} from "react-icons/md";
-import withSizes from "react-sizes";
-import colors from "../utils/colors";
+  Box, Text, NavItem, PrimaryNav,
+} from 'mineral-ui';
+import { pushRotate as Menu } from 'react-burger-menu';
+import styled from '@emotion/styled';
+import {
+  MdForum,
+  MdHome,
+  MdLandscape,
+  MdLaptopMac,
+  MdRestaurant,
+} from 'react-icons/md';
+import withSizes from 'react-sizes';
+import { colors } from '../utils/colors';
 
 const BurgerStyles = {
-    bmBurgerButton: {
-        position: 'fixed',
-        width: '7vw',
-        height: '6vw',
-        left: '5vw',
-        top: '3vw',
-    },
+  bmBurgerButton: {
+    position: 'fixed',
+    width: '7vw',
+    height: '6vw',
+    left: '5vw',
+    top: '3vw',
+  },
 
-    bmBurgerBars: {
-        background: colors.gray[8]
-    },
+  bmBurgerBars: {
+    background: colors.gray[8],
+  },
 
-    bmCrossButton: {
-        height: '24px',
-        width: '24px'
-    },
+  bmCrossButton: {
+    height: '24px',
+    width: '24px',
+  },
 
-    bmCross: {
-        background: colors.gray[9]
-    },
+  bmCross: {
+    background: colors.gray[9],
+  },
 
-    bmMenuWrap: {
-        position: 'fixed',
-        height: '100%'
-    },
+  bmMenuWrap: {
+    position: 'fixed',
+    height: '100%',
+  },
 
-    bmMenu: {
-        background: colors.brand,
-        padding: '2.5em 0',
-        fontSize: '1.15em'
-    },
+  bmMenu: {
+    background: colors.brand,
+    padding: '2.5em 0',
+    fontSize: '1.15em',
+  },
 
-    bmMorphShape: {
-        fill: colors.brand,
-    },
+  bmMorphShape: {
+    fill: colors.brand,
+  },
 
-    bmItemList: {
-        padding: '0.8em 0'
-    },
+  bmItemList: {
+    padding: '0.8em 0',
+  },
 
-    bmItem: {
-        display: 'inline-block'
-    },
+  bmItem: {
+    display: 'inline-block',
+  },
 
-    bmOverlay: {
-        background: 'rgba(59, 64, 63, 0.3)'
-    }
+  bmOverlay: {
+    background: 'rgba(59, 64, 63, 0.3)',
+  },
 };
 
 const MobileNavItem = styled(NavItem)`
@@ -116,68 +118,98 @@ const Break = styled('hr')`
     height: 1px;
 `;
 
-const mapSizesToProps = ({width}) => ({
-    isMobile: width < 670,
+const mapSizesToProps = ({ width }) => ({
+  isMobile: width < 670,
 });
 
 class Navbar extends React.Component {
-    render() {
-        return (
+  render() {
+    return (
+      <>
+        <MobileHeader>
+          <SiteTitle as="h1">Wilderness Liz</SiteTitle>
+        </MobileHeader>
+        {this.props.isMobile
+          ? (
+            <Menu
+              pageWrapId="page-wrap"
+              outerContainerId="outer-container"
+              styles={BurgerStyles}
+            >
+              <MobilePrimaryNav
+                minimal
+                itemAs={Link}
+                role="navigation"
+                aria-label="main-navigation"
+              >
+                <MobileNavItem maxWidth="10em" to="/">
+                  <MdHome />
+                  {' '}
+                  Home
+                </MobileNavItem>
+                <MobileNavItem maxWidth="10em" to="/about">
+                  <MdRestaurant />
+                  {' '}
+                  Food Guides
+                </MobileNavItem>
+                <MobileNavItem maxWidth="10em" to="/trips">
+                  <MdLandscape />
+                  {' '}
+                  Trips
+                </MobileNavItem>
+                <MobileNavItem maxWidth="10em" to="/blog">
+                  <MdLaptopMac />
+                  {' '}
+                  Blog
+                </MobileNavItem>
+                <MobileNavItem maxWidth="10em" to="/contact">
+                  <MdForum />
+                  {' '}
+                  Contact
+                </MobileNavItem>
+              </MobilePrimaryNav>
+            </Menu>
+          )
+          : (
             <>
-                <MobileHeader>
-                    <SiteTitle as="h1">Wilderness Liz</SiteTitle>
-                </MobileHeader>
-                {this.props.isMobile ?
-                    <Menu pageWrapId={"page-wrap"}
-                          outerContainerId={"outer-container"}
-                          styles={BurgerStyles}>
-                        <MobilePrimaryNav minimal
-                                          itemAs={Link}
-                                          role="navigation"
-                                          aria-label="main-navigation">
-                            <MobileNavItem maxWidth="10em" to="/">
-                                <MdHome/> Home
-                            </MobileNavItem>
-                            <MobileNavItem maxWidth="10em" to="/about">
-                                <MdRestaurant/> Food Guides
-                            </MobileNavItem>
-                            <MobileNavItem maxWidth="10em" to="/trips">
-                                <MdLandscape/> Trips
-                            </MobileNavItem>
-                            <MobileNavItem maxWidth="10em" to="/blog">
-                                <MdLaptopMac/> Blog
-                            </MobileNavItem>
-                            <MobileNavItem maxWidth="10em" to="/contact">
-                                <MdForum/> Contact
-                            </MobileNavItem>
-                        </MobilePrimaryNav>
-                    </Menu> :
-                    <>
-                        <Break/>
-                        <DesktopPrimaryNav minimal
-                                           itemAs={Link}
-                                           role="navigation"
-                                           aria-label="main-navigation">
-                            <DesktopNavItem maxWidth="10em" to="/">
-                                <MdHome/> Home
-                            </DesktopNavItem>
-                            <DesktopNavItem maxWidth="10em" to="/about">
-                                <MdRestaurant/> Food Guides
-                            </DesktopNavItem>
-                            <DesktopNavItem maxWidth="10em" to="/trips">
-                                <MdLandscape/> Trips
-                            </DesktopNavItem>
-                            <DesktopNavItem maxWidth="10em" to="/blog">
-                                <MdLaptopMac/> Blog
-                            </DesktopNavItem>
-                            <DesktopNavItem maxWidth="10em" to="/contact">
-                                <MdForum/> Contact
-                            </DesktopNavItem>
-                        </DesktopPrimaryNav>
-                    </>}
+              <Break />
+              <DesktopPrimaryNav
+                minimal
+                itemAs={Link}
+                role="navigation"
+                aria-label="main-navigation"
+              >
+                <DesktopNavItem maxWidth="10em" to="/">
+                  <MdHome />
+                  {' '}
+                  Home
+                </DesktopNavItem>
+                <DesktopNavItem maxWidth="10em" to="/about">
+                  <MdRestaurant />
+                  {' '}
+                  Food Guides
+                </DesktopNavItem>
+                <DesktopNavItem maxWidth="10em" to="/trips">
+                  <MdLandscape />
+                  {' '}
+                  Trips
+                </DesktopNavItem>
+                <DesktopNavItem maxWidth="10em" to="/blog">
+                  <MdLaptopMac />
+                  {' '}
+                  Blog
+                </DesktopNavItem>
+                <DesktopNavItem maxWidth="10em" to="/contact">
+                  <MdForum />
+                  {' '}
+                  Contact
+                </DesktopNavItem>
+              </DesktopPrimaryNav>
             </>
-        );
-    }
+          )}
+      </>
+    );
+  }
 }
 
 export default withSizes(mapSizesToProps)(Navbar);

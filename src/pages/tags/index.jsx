@@ -1,8 +1,9 @@
-import React from 'react'
-import { kebabCase } from 'lodash'
-import Helmet from 'react-helmet'
-import { Link, graphql } from 'gatsby'
-import Layout from '../../components/Layout'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { kebabCase } from 'lodash';
+import Helmet from 'react-helmet';
+import { Link, graphql, StaticQuery } from 'gatsby';
+import Layout from '../../components/Layout';
 
 const TagsPage = ({
   data: {
@@ -26,7 +27,11 @@ const TagsPage = ({
               {group.map(tag => (
                 <li key={tag.fieldValue}>
                   <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                    {tag.fieldValue} ({tag.totalCount})
+                    {tag.fieldValue}
+                    {' '}
+                  (
+                    {tag.totalCount}
+                  )
                   </Link>
                 </li>
               ))}
@@ -38,20 +43,27 @@ const TagsPage = ({
   </Layout>
 );
 
-export default TagsPage
+export default props => (
+  <StaticQuery
+    query={graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+        allMarkdownRemark(limit: 1000) {
+          group(field: frontmatter___tags) {
+            fieldValue
+            totalCount
+          }
+        }
+      }
+    `}
+    render={data => <TagsPage data={data} {...props} />}
+  />
+);
 
-export const tagPageQuery = graphql`
-  query TagsQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(limit: 1000) {
-      group(field: frontmatter___tags) {
-        fieldValue
-        totalCount
-      }
-    }
-  }
-`;
+TagsPage.propTypes = {
+  data: PropTypes.shape.isRequired,
+};

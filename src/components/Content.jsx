@@ -1,8 +1,8 @@
-import * as React from "react";
+import * as React from 'react';
 import PropTypes from 'prop-types';
-import {Box} from "mineral-ui";
-import styled from "@emotion/styled";
-import colors from "../utils/colors";
+import { Box } from 'mineral-ui';
+import styled from '@emotion/styled';
+import { colors } from '../utils/colors';
 
 const ContentBox = styled(Box)`
     margin: 5vh 5vw;
@@ -54,24 +54,25 @@ const ContentBox = styled(Box)`
     }
 `;
 
-export const HTMLContent = ({content, className}) => (
-    <ContentBox as="main"
-                id="page-wrap"
-                className={className}
-                dangerouslySetInnerHTML={{__html: content}}/>
+export const HTMLContent = ({ content, className }) => (
+  <ContentBox
+    as="main"
+    id="page-wrap"
+    className={className}
+    dangerouslySetInnerHTML={{ __html: content }}
+  />
 );
 
-const Content = ({content}) => (
-    <div>
-        {content}
-    </div>
+const Content = ({ content }) => (
+  <div>
+    {content}
+  </div>
 );
 
 Content.propTypes = {
-    content: PropTypes.node,
-    className: PropTypes.string,
+  content: PropTypes.node.isRequired,
 };
 
 HTMLContent.propTypes = Content.propTypes;
 
-export default Content
+export default Content;

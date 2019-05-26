@@ -1,10 +1,10 @@
-import * as React from "react";
+import * as React from 'react';
 
-import {Flex, FlexItem, Text} from "mineral-ui";
-import BackgroundImage from "gatsby-background-image";
-import styled from "@emotion/styled";
-import * as PropTypes from "prop-types";
-import colors from "../utils/colors"
+import { Flex, FlexItem, Text } from 'mineral-ui';
+import BackgroundImage from 'gatsby-background-image';
+import styled from '@emotion/styled';
+import * as PropTypes from 'prop-types';
+import { colors } from '../utils/colors';
 
 const Description = styled(Text)`
     font-size: 18px;
@@ -21,35 +21,38 @@ const DescriptionBox = styled(FlexItem)`
     flex-direction: column;
 `;
 
-class Hero extends React.Component {
-    render() {
-        let {cover_image, title, description, height} = this.props;
-        return (
-            <BackgroundImage fluid={cover_image}
-                             backgroundColor={colors.brand}>
-                <Flex justifyContent="evenly"
-                      direction="row"
-                      height={height}
-                >
-                    <DescriptionBox>
-                        <Text align="center" as="h1">
-                            {title}
-                        </Text>
-                        <Description>
-                            {description}
-                        </Description>
-                    </DescriptionBox>
-                </Flex>
-            </BackgroundImage>
-        );
-    }
+function Hero(props) {
+  const {
+    coverImage, title, description, height,
+  } = props;
+  return (
+    <BackgroundImage
+      fluid={coverImage}
+      backgroundColor={colors.brand}
+    >
+      <Flex
+        justifyContent="evenly"
+        direction="row"
+        height={height}
+      >
+        <DescriptionBox>
+          <Text align="center" as="h1">
+            {title}
+          </Text>
+          <Description>
+            {description}
+          </Description>
+        </DescriptionBox>
+      </Flex>
+    </BackgroundImage>
+  );
 }
 
 Hero.propTypes = {
-    cover_image: PropTypes.any,
-    title: PropTypes.any,
-    description: PropTypes.any,
-    height: PropTypes.any
+  coverImage: PropTypes.shape.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  height: PropTypes.string.isRequired,
 };
 
-export default Hero
+export default Hero;
