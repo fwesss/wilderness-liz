@@ -1,7 +1,7 @@
 ---
 templateKey: trip-page
 title: Super Duper Fun
-cover_image: /img/26868709_166156560680031_363773104222109696_n.jpg_keccxf.jpg
+cover_image: /img/small-teton.jpg
 date: 2019-04-19T02:14:25.811Z
 description: 'Wow, I can''t believe how fun this trip was.'
 tags:
