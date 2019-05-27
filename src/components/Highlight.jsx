@@ -163,5 +163,5 @@ Highlight.propTypes = {
 Highlight.defaultProps = {
   imageLink: '',
   title: '',
-  height: 0,
+  height: 150,
 };

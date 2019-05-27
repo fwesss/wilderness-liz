@@ -1,7 +1,7 @@
 const { createRemoteFileNode } = require('gatsby-source-filesystem');
 const axios = require('axios');
 
-const API_URI = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=1166201.1677ed0.64bbc488c03c40ac9e37f07fdb427939';
+const API_URI = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=1166201.ee9b4d0.b39fad683cd34eea831d050edad4f904';
 
 exports.sourceNodes = async ({
   actions, createNodeId, store, cache,

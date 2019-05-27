@@ -17,6 +17,7 @@ export default function InstagramCarousel() {
         allFile(
           filter: {fields: {InstagramImage: {eq: "true"}}}
           sort: {fields: [fields___likes], order: DESC}
+          limit: 60
         ) {
           edges {
             node {
@@ -50,7 +51,6 @@ export default function InstagramCarousel() {
           imageLink={node.fields.link}
           coverImage={node.childImageSharp.fluid}
           description={node.fields.caption}
-          height={150}
         />
       </div>,
     );
@@ -65,7 +65,7 @@ export default function InstagramCarousel() {
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 8000,
     pauseOnFocus: true,
     pauseOnHover: true,
     lazyLoad: 'progressive',
