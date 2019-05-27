@@ -11,6 +11,9 @@ const ContentLink = styled(FlexItem)`
     @media screen and (min-width: 1600px) {
         min-width: 420px;
     }
+    @media screen and (max-width: 670px) {
+        margin-right: 0;
+    }
 `;
 
 function ContentRoll(props) {
@@ -19,23 +22,19 @@ function ContentRoll(props) {
 
   return (
     <Flex wrap>
-      {posts
-          && posts.slice(3).map(({ node: post }) => (
-            <ContentLink
-              key={post.id}
-              minWidth="290px"
-            >
-              <ContentThumb
-                coverImage={post.frontmatter.coverImage.childImageSharp.fluid}
-                description={post.frontmatter.description}
-                title={post.frontmatter.title}
-                link={post.fields.slug}
-                contentType={post.frontmatter.templateKey}
-                date={post.frontmatter.date}
-                height={300}
-              />
-            </ContentLink>
-          ))}
+      {posts && posts.slice(3).map(({ node: post }) => (
+        <ContentLink key={post.id} minWidth="290px">
+          <ContentThumb
+            coverImage={post.frontmatter.coverImage.childImageSharp.fluid}
+            description={post.frontmatter.description}
+            title={post.frontmatter.title}
+            link={post.fields.slug}
+            contentType={post.frontmatter.templateKey}
+            date={post.frontmatter.date}
+            height={300}
+          />
+        </ContentLink>
+      ))}
     </Flex>
   );
 }

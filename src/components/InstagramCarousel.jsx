@@ -1,15 +1,13 @@
 import React from 'react';
 
 import Slider from 'react-slick';
-import Img from 'gatsby-image';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
 import { graphql, useStaticQuery } from 'gatsby';
 import {
   Box, Grid, GridItem, Text,
 } from 'mineral-ui';
-import { colors } from '../utils/colors';
+import Highlight from './Highlight';
 
 
 export default function InstagramCarousel() {
@@ -17,17 +15,21 @@ export default function InstagramCarousel() {
     graphql`
       query {
         allFile(
-          sort: { fields: name, order: DESC }
-          filter: { sourceInstanceName: { eq: "insta" } }
+          filter: {fields: {InstagramImage: {eq: "true"}}}
+          sort: {fields: [fields___likes], order: DESC}
         ) {
           edges {
             node {
-              id
-              name
               childImageSharp {
-                fluid(maxWidth: 2080, maxHeight: 2080) {
+                fluid(maxWidth: 600, maxHeight: 600) {
                   ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
+              }
+              id
+              fields {
+                link
+                caption
+                likes
               }
             }
           }
@@ -37,14 +39,18 @@ export default function InstagramCarousel() {
   );
 
   const images = [];
+  let title = '';
 
   allFile.edges.forEach(({ node }) => {
+    title = `\u2764 ${node.fields.likes}`;
     images.push(
       <div key={node.id}>
-        <Img
-          fluid={node.childImageSharp.fluid}
-          alt={node.name.replace(/-/g, ' ')}
-          backgroundColor={colors.brand}
+        <Highlight
+          title={title.toString()}
+          imageLink={node.fields.link}
+          coverImage={node.childImageSharp.fluid}
+          description={node.fields.caption}
+          height={150}
         />
       </div>,
     );
@@ -67,17 +73,10 @@ export default function InstagramCarousel() {
 
   return (
     <Box>
-      <Text
-        align="center"
-        as="h2"
-      >
+      <Text align="center" as="h2">
         Instagram
       </Text>
-      <Grid
-        gutterWidth={0}
-        columns={2}
-        breakpoints={[1000]}
-      >
+      <Grid gutterWidth={0} columns={2} breakpoints={[1000]}>
         <GridItem span={[2, 1]}>
           <Slider {...settings}>
             {images.splice(0, Math.ceil(images.length / 2))}

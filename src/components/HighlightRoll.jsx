@@ -29,30 +29,6 @@ const GridPadBox = styled(GridItem)`
     }
 `;
 
-const HighlightLink = styled(FlexItem)`
-    &:last-child {
-        margin-top: 20px;
-    }
-    
-    @media screen and (max-width: 1000px) {
-        &:first-of-type {
-            margin-top: 20px;
-        }
-    }
-    
-    @media (hover: hover) {
-        &:hover p {
-            opacity: 1;
-            transform: translate3d(0, 0, 0);
-            transition-delay: 0.15s;
-        }
-        &:hover div {
-            opacity: 0.4;
-            transform: scale3d(1.1, 1.1, 1);
-        }
-    }
-`;
-
 const HighlightGrid = styled(Grid)`
     position: relative;
     margin: 0 auto;
@@ -75,35 +51,27 @@ function HighlightRoll(props) {
           key={post.id}
           span={[5, 3]}
         >
-          <HighlightLink
-            as={Link}
-            to={post.fields.slug}
-          >
-            <Highlight
-              coverImage={post.frontmatter.coverImage.childImageSharp.fluid}
-              description={post.frontmatter.description}
-              title={post.frontmatter.title}
-              height={520}
-            />
-          </HighlightLink>
+          <Highlight
+            imageLink={post.fields.slug}
+            coverImage={post.frontmatter.coverImage.childImageSharp.fluid}
+            description={post.frontmatter.description}
+            title={post.frontmatter.title}
+            height={520}
+          />
         </GridPadBox>
       ))}
       <GridPadBox>
         <GridItem span={[5, 2]}>
           <Flex direction="column">
             {posts && posts.slice(1, 3).map(({ node: post }) => (
-              <HighlightLink
+              <Highlight
                 key={post.id}
-                as={Link}
-                to={post.fields.slug}
-              >
-                <Highlight
-                  coverImage={post.frontmatter.coverImage.childImageSharp.fluid}
-                  description={post.frontmatter.description}
-                  title={post.frontmatter.title}
-                  height={240}
-                />
-              </HighlightLink>
+                imageLink={post.fields.slug}
+                coverImage={post.frontmatter.coverImage.childImageSharp.fluid}
+                description={post.frontmatter.description}
+                title={post.frontmatter.title}
+                height={250}
+              />
             ))}
           </Flex>
         </GridItem>

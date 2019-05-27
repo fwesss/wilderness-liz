@@ -223,6 +223,7 @@ type File implements Node {
     dir: String
     ext: String
     extension: String
+    fields: FileFields
     gid: Int
     id: ID!
     ino: Int
@@ -262,6 +263,7 @@ type File implements Node {
     size: Int
     sourceInstanceName: String
     uid: Int
+    url: String
 }
 
 type FileConnection {
@@ -279,6 +281,14 @@ type FileEdge {
     previous: File
 }
 
+type FileFields {
+    InstagramImage: String
+    caption: String
+    created: String
+    likes: Int
+    link: String
+}
+
 type FileGroupConnection {
     edges: [FileEdge!]!
     field: String!
@@ -292,9 +302,11 @@ type ImageSharp implements Node {
     children: [Node!]!
     fixed(base64Width: Int, cropFocus: ImageCropFocus = ATTENTION, duotone: DuotoneGradient, grayscale: Boolean = false, height: Int, jpegProgressive: Boolean = true, pngCompressionSpeed: Int = 4, quality: Int, rotate: Int = 0, toFormat: ImageFormat = NO_CHANGE, toFormatBase64: ImageFormat = NO_CHANGE, traceSVG: Potrace, width: Int): ImageSharpFixed
     fluid(
+        background: String = "rgba(0,0,0,1)",
         base64Width: Int,
         cropFocus: ImageCropFocus = ATTENTION,
         duotone: DuotoneGradient,
+        fit: ImageFit = COVER,
         grayscale: Boolean = false,
         jpegProgressive: Boolean = true,
         maxHeight: Int,
@@ -316,9 +328,11 @@ type ImageSharp implements Node {
     resize(base64: Boolean = false, cropFocus: ImageCropFocus = ATTENTION, duotone: DuotoneGradient, grayscale: Boolean = false, height: Int, jpegProgressive: Boolean = true, pngCompressionLevel: Int = 9, pngCompressionSpeed: Int = 4, quality: Int, rotate: Int = 0, toFormat: ImageFormat = NO_CHANGE, traceSVG: Potrace, width: Int): ImageSharpResize
     resolutions(base64Width: Int, cropFocus: ImageCropFocus = ATTENTION, duotone: DuotoneGradient, grayscale: Boolean = false, height: Int, jpegProgressive: Boolean = true, pngCompressionSpeed: Int = 4, quality: Int, rotate: Int = 0, toFormat: ImageFormat = NO_CHANGE, toFormatBase64: ImageFormat = NO_CHANGE, traceSVG: Potrace, width: Int): ImageSharpResolutions @deprecated(reason : "Resolutions was deprecated in Gatsby v2. It's been renamed to \"fixed\" https:\/\/example.com\/write-docs-and-fix-this-example-link")
     sizes(
+        background: String = "rgba(0,0,0,1)",
         base64Width: Int,
         cropFocus: ImageCropFocus = ATTENTION,
         duotone: DuotoneGradient,
+        fit: ImageFit = COVER,
         grayscale: Boolean = false,
         jpegProgressive: Boolean = true,
         maxHeight: Int,
@@ -575,7 +589,7 @@ type Query {
     allSitePage(filter: SitePageFilterInput, limit: Int, skip: Int, sort: SitePageSortInput): SitePageConnection
     allSitePlugin(filter: SitePluginFilterInput, limit: Int, skip: Int, sort: SitePluginSortInput): SitePluginConnection
     directory(absolutePath: StringQueryOperatorInput, accessTime: DateQueryOperatorInput, atime: DateQueryOperatorInput, atimeMs: FloatQueryOperatorInput, base: StringQueryOperatorInput, birthTime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, changeTime: DateQueryOperatorInput, children: NodeFilterListInput, ctime: DateQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, dev: IntQueryOperatorInput, dir: StringQueryOperatorInput, ext: StringQueryOperatorInput, extension: StringQueryOperatorInput, gid: IntQueryOperatorInput, id: StringQueryOperatorInput, ino: IntQueryOperatorInput, internal: InternalFilterInput, mode: IntQueryOperatorInput, modifiedTime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, name: StringQueryOperatorInput, nlink: IntQueryOperatorInput, parent: NodeFilterInput, prettySize: StringQueryOperatorInput, rdev: IntQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, root: StringQueryOperatorInput, size: IntQueryOperatorInput, sourceInstanceName: StringQueryOperatorInput, uid: IntQueryOperatorInput): Directory
-    file(absolutePath: StringQueryOperatorInput, accessTime: DateQueryOperatorInput, atime: DateQueryOperatorInput, atimeMs: FloatQueryOperatorInput, base: StringQueryOperatorInput, birthTime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, changeTime: DateQueryOperatorInput, children: NodeFilterListInput, ctime: DateQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, dev: IntQueryOperatorInput, dir: StringQueryOperatorInput, ext: StringQueryOperatorInput, extension: StringQueryOperatorInput, gid: IntQueryOperatorInput, id: StringQueryOperatorInput, ino: IntQueryOperatorInput, internal: InternalFilterInput, mode: IntQueryOperatorInput, modifiedTime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, name: StringQueryOperatorInput, nlink: IntQueryOperatorInput, parent: NodeFilterInput, prettySize: StringQueryOperatorInput, publicURL: StringQueryOperatorInput, rdev: IntQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, root: StringQueryOperatorInput, size: IntQueryOperatorInput, sourceInstanceName: StringQueryOperatorInput, uid: IntQueryOperatorInput): File
+    file(absolutePath: StringQueryOperatorInput, accessTime: DateQueryOperatorInput, atime: DateQueryOperatorInput, atimeMs: FloatQueryOperatorInput, base: StringQueryOperatorInput, birthTime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, changeTime: DateQueryOperatorInput, children: NodeFilterListInput, ctime: DateQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, dev: IntQueryOperatorInput, dir: StringQueryOperatorInput, ext: StringQueryOperatorInput, extension: StringQueryOperatorInput, fields: FileFieldsFilterInput, gid: IntQueryOperatorInput, id: StringQueryOperatorInput, ino: IntQueryOperatorInput, internal: InternalFilterInput, mode: IntQueryOperatorInput, modifiedTime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, name: StringQueryOperatorInput, nlink: IntQueryOperatorInput, parent: NodeFilterInput, prettySize: StringQueryOperatorInput, publicURL: StringQueryOperatorInput, rdev: IntQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, root: StringQueryOperatorInput, size: IntQueryOperatorInput, sourceInstanceName: StringQueryOperatorInput, uid: IntQueryOperatorInput, url: StringQueryOperatorInput): File
     imageSharp(children: NodeFilterListInput, fixed: ImageSharpFixedFilterInput, fluid: ImageSharpFluidFilterInput, id: StringQueryOperatorInput, internal: InternalFilterInput, original: ImageSharpOriginalFilterInput, parent: NodeFilterInput, resize: ImageSharpResizeFilterInput, resolutions: ImageSharpResolutionsFilterInput, sizes: ImageSharpSizesFilterInput): ImageSharp
     markdownRemark(children: NodeFilterListInput, excerpt: StringQueryOperatorInput, excerptAst: JSONQueryOperatorInput, fields: MarkdownRemarkFieldsFilterInput, fileAbsolutePath: StringQueryOperatorInput, frontmatter: MarkdownRemarkFrontmatterFilterInput, headings: MarkdownHeadingFilterListInput, html: StringQueryOperatorInput, htmlAst: JSONQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, rawMarkdownBody: StringQueryOperatorInput, tableOfContents: StringQueryOperatorInput, timeToRead: IntQueryOperatorInput, wordCount: wordCountFilterInput): MarkdownRemark
     site(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, host: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, pathPrefix: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, port: IntQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput): Site
@@ -988,6 +1002,11 @@ enum FileFieldsEnum {
     dir
     ext
     extension
+    fields___InstagramImage
+    fields___caption
+    fields___created
+    fields___likes
+    fields___link
     gid
     id
     ino
@@ -1052,6 +1071,7 @@ enum FileFieldsEnum {
     size
     sourceInstanceName
     uid
+    url
 }
 
 enum HeadingLevels {
@@ -1075,6 +1095,12 @@ enum ImageCropFocus {
     SOUTHEAST
     SOUTHWEST
     WEST
+}
+
+enum ImageFit {
+    CONTAIN
+    COVER
+    FILL
 }
 
 enum ImageFormat {
@@ -1290,6 +1316,11 @@ enum MarkdownRemarkFieldsEnum {
     frontmatter___coverImage___dir
     frontmatter___coverImage___ext
     frontmatter___coverImage___extension
+    frontmatter___coverImage___fields___InstagramImage
+    frontmatter___coverImage___fields___caption
+    frontmatter___coverImage___fields___created
+    frontmatter___coverImage___fields___likes
+    frontmatter___coverImage___fields___link
     frontmatter___coverImage___gid
     frontmatter___coverImage___id
     frontmatter___coverImage___ino
@@ -1318,6 +1349,7 @@ enum MarkdownRemarkFieldsEnum {
     frontmatter___coverImage___size
     frontmatter___coverImage___sourceInstanceName
     frontmatter___coverImage___uid
+    frontmatter___coverImage___url
     frontmatter___date
     frontmatter___description
     frontmatter___heading
@@ -1341,6 +1373,11 @@ enum MarkdownRemarkFieldsEnum {
     frontmatter___image___dir
     frontmatter___image___ext
     frontmatter___image___extension
+    frontmatter___image___fields___InstagramImage
+    frontmatter___image___fields___caption
+    frontmatter___image___fields___created
+    frontmatter___image___fields___likes
+    frontmatter___image___fields___link
     frontmatter___image___gid
     frontmatter___image___id
     frontmatter___image___ino
@@ -1369,6 +1406,7 @@ enum MarkdownRemarkFieldsEnum {
     frontmatter___image___size
     frontmatter___image___sourceInstanceName
     frontmatter___image___uid
+    frontmatter___image___url
     frontmatter___intro___blurbs
     frontmatter___intro___blurbs___text
     frontmatter___intro___description
@@ -1968,6 +2006,14 @@ input DuotoneGradient {
     shadow: String
 }
 
+input FileFieldsFilterInput {
+    InstagramImage: StringQueryOperatorInput
+    caption: StringQueryOperatorInput
+    created: StringQueryOperatorInput
+    likes: IntQueryOperatorInput
+    link: StringQueryOperatorInput
+}
+
 input FileFilterInput {
     absolutePath: StringQueryOperatorInput
     accessTime: DateQueryOperatorInput
@@ -1987,6 +2033,7 @@ input FileFilterInput {
     dir: StringQueryOperatorInput
     ext: StringQueryOperatorInput
     extension: StringQueryOperatorInput
+    fields: FileFieldsFilterInput
     gid: IntQueryOperatorInput
     id: StringQueryOperatorInput
     ino: IntQueryOperatorInput
@@ -2007,6 +2054,7 @@ input FileFilterInput {
     size: IntQueryOperatorInput
     sourceInstanceName: StringQueryOperatorInput
     uid: IntQueryOperatorInput
+    url: StringQueryOperatorInput
 }
 
 input FileSortInput {
