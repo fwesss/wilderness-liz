@@ -1,0 +1,7 @@
+{
+  "name": "my-instagram-feed",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "gatsby-source-filesystem": "^2.0.37"
+  }
+}
