@@ -7,7 +7,8 @@ import { graphql, useStaticQuery } from 'gatsby';
 import {
   Box, Grid, GridItem, Text,
 } from 'mineral-ui';
-import Highlight from './Highlight';
+import InstaSquare from './InstaSquare';
+import { colors } from '../utils/colors';
 
 
 export default function InstagramCarousel() {
@@ -40,17 +41,29 @@ export default function InstagramCarousel() {
   );
 
   const images = [];
-  let title = '';
+  let likesCount = '';
+  const palette = [
+    colors.yellow,
+    colors.fuschia,
+    colors.teal,
+    colors.blue,
+    colors.cyan,
+    colors.green,
+    colors.indigo,
+    colors.lime,
+    colors.green,
+  ];
 
   allFile.edges.forEach(({ node }) => {
-    title = `\u2764 ${node.fields.likes}`;
+    likesCount = `\u2764 ${node.fields.likes}`;
     images.push(
       <div key={node.id}>
-        <Highlight
-          title={title.toString()}
+        <InstaSquare
+          likes={likesCount.toString()}
           imageLink={node.fields.link}
           coverImage={node.childImageSharp.fluid}
           description={node.fields.caption}
+          background={palette[Math.floor(Math.random() * palette.length)][3]}
         />
       </div>,
     );

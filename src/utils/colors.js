@@ -154,10 +154,13 @@ const greens = [
     '#6c9d78',
     '#4e7157',
 ];
+const brand = '#A1B5B2';
+const black = '#3b403f';
+const white = '#ffffff';
 export const colors = {
-    brand: '#A1B5B2',
-    black: '#3b403f',
-    white: '#ffffff',
+    brand,
+    black,
+    white,
     gray: grays,
     teal: teals,
     cyan: cyans,
@@ -172,4 +175,9 @@ export const colors = {
     lime: limes,
     green: greens,
 };
+export const allColors = [
+    brand, black, white, ...grays, ...teals, ...cyans, ...blues, ...indigos,
+    ...violets, ...fuschias, ...pinks, ...reds, ...oranges, ...yellows, ...limes,
+    ...greens,
+];
 export default colors;

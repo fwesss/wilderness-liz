@@ -19,7 +19,7 @@ const HighlightLink = styled(FlexItem)`
     }
     
     @media (hover: hover) {
-        &:hover p, &:hover .insta {
+        &:hover p {
             opacity: 1;
             transform: translate3d(0, 0, 0);
             transition-delay: 0.15s;
@@ -37,9 +37,6 @@ const HighlightFigure = styled(Box)`
     margin: 10px 1%;
     background: ${colors.brand};
     text-align: center;
-    .insta {
-      padding: 0;
-    }
 `;
 
 const HighlightImg = styled(Img)`
@@ -54,11 +51,6 @@ const HighlightImg = styled(Img)`
 
 const HighlightCaption = styled('figcaption')`
     padding: 2em;
-    .insta {
-      font-size: 0.5em;
-      padding: 0.5em;
-    }
-    
     color: ${colors.white};
     backface-visibility: hidden;
     &::before, &::after {
@@ -81,22 +73,6 @@ const HighlightTitle = styled(Text)`
     font-size: 2.5em;
 `;
 
-const InstaTitle = styled(Text)`
-    margin: 0;
-    position: relative;
-    padding: 0.5em 0;
-    color: ${colors.gray[9]};
-    font-size: 1em;
-    background: rgba(248, 249, 249, 0.7);
-    text-transform: none;
-    width: 95%;
-    overflow: hidden;
-    @media (hover: hover) {
-        transition: opacity 0.35s, transform 0.35s;
-        transform: translate3d(-1000px, 0, 0);
-    }
-`;
-
 const HightlightDescription = styled(Text)`
     display: inline-block;
     margin: 0 0 0.25em;
@@ -116,52 +92,28 @@ export default function Highlight(props) {
     imageLink, coverImage, title, description, height,
   } = props;
   return (
-    <div>
-      {imageLink.includes('http') ? (
-        <HighlightLink as="a" href={imageLink}>
-          <HighlightFigure className="insta" as="figure" height={height}>
-            <HighlightImg fluid={coverImage} />
-            <HighlightCaption className="insta">
-              <InstaTitle className="insta" as="h2">
-                {title}
-              </InstaTitle>
-              <HightlightDescription className="insta" as="p">
-                {description}
-              </HightlightDescription>
-            </HighlightCaption>
-          </HighlightFigure>
-        </HighlightLink>
-      ) : (
-        <HighlightLink as={Link} to={imageLink}>
-          <HighlightFigure as="figure" height={height}>
-            <HighlightImg fluid={coverImage} />
-            <HighlightCaption>
-              <HighlightTitle as="h2">
-                {title}
-              </HighlightTitle>
-              <HightlightDescription as="p">
-                {description}
-              </HightlightDescription>
-            </HighlightCaption>
-          </HighlightFigure>
-        </HighlightLink>
-      )}
-    </div>
+    <HighlightLink as={Link} to={imageLink}>
+      <HighlightFigure as="figure" height={height}>
+        <HighlightImg fluid={coverImage} />
+        <HighlightCaption>
+          <HighlightTitle as="h2">
+            {title}
+          </HighlightTitle>
+          <HightlightDescription as="p">
+            {description}
+          </HightlightDescription>
+        </HighlightCaption>
+      </HighlightFigure>
+    </HighlightLink>
   );
 }
 
 Highlight.propTypes = {
-  imageLink: PropTypes.string,
+  imageLink: PropTypes.string.isRequired,
   coverImage: PropTypes.shape({
     requiredProperty: PropTypes.object,
   }).isRequired,
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  height: PropTypes.number,
-};
-
-Highlight.defaultProps = {
-  imageLink: '',
-  title: '',
-  height: 150,
+  height: PropTypes.number.isRequired,
 };
