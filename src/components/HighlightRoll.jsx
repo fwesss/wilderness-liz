@@ -56,7 +56,7 @@ function HighlightRoll(props) {
             coverImage={post.frontmatter.coverImage.childImageSharp.fluid}
             description={post.frontmatter.description}
             title={post.frontmatter.title}
-            height={520}
+            height={540}
           />
         </GridPadBox>
       ))}
