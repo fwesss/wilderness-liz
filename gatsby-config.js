@@ -45,6 +45,7 @@ module.exports = {
               withWebp: true,
               tracedSVG: true,
               backgroundColor: '#A1B5B2',
+              linkImagesToOriginal: false,
             },
           },
           {
