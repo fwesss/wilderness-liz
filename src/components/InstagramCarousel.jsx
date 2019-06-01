@@ -63,7 +63,7 @@ export default function InstagramCarousel() {
           imageLink={node.fields.link}
           coverImage={node.childImageSharp.fluid}
           description={node.fields.caption}
-          background={palette[Math.floor(Math.random() * palette.length)][3]}
+          background={palette[Math.floor(Math.random() * palette.length)][1]}
         />
       </div>,
     );

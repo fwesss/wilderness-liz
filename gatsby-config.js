@@ -48,6 +48,12 @@ module.exports = {
             },
           },
           {
+            resolve: 'gatsby-remark-images-zoom',
+            options: {
+              backgroundColor: '#A1B5B2',
+            },
+          },
+          {
             resolve: 'gatsby-remark-copy-linked-files',
             options: {
               destinationDir: 'static',
