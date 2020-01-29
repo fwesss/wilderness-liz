@@ -43,7 +43,7 @@
     "gatsby-remark-relative-images": "^0.2.1",
     "gatsby-source-filesystem": "^2.0.37",
     "gatsby-source-instagram-all": "^2.0.5",
-    "gatsby-transformer-remark": "^2.3.4",
+    "gatsby-transformer-remark": "^2.6.5",
     "gatsby-transformer-sharp": "^2.1.19",
     "instafeed.js": "^1.4.1",
     "jsonp-promise": "^0.1.2",
