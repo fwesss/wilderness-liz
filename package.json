@@ -65,7 +65,7 @@
     "react-scroll-parallax": "^2.1.2",
     "react-scroll-up-button": "^1.6.4",
     "react-sizes": "^2.0.0",
-    "react-slick": "^0.24.0",
+    "react-slick": "^0.27.11",
     "react-typography": "^0.16.19",
     "slick-carousel": "^1.8.1",
     "source-map-loader": "^0.2.4",
