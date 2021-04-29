@@ -1,0 +1,38 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "13:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: gatsby-background-image
+    versions:
+    - 1.4.0
+    - 1.4.1
+    - 1.5.0
+    - 1.5.1
+  - dependency-name: netlify-cms
+    versions:
+    - 2.10.104
+    - 2.10.80
+    - 2.10.96
+    - 2.10.99
+  - dependency-name: react-parallax
+    versions:
+    - 3.1.2
+    - 3.2.0
+    - 3.2.1
+  - dependency-name: react-slick
+    versions:
+    - 0.28.0
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
+  - dependency-name: elliptic
+    versions:
+    - 6.5.3
+  - dependency-name: jquery
+    versions:
+    - 3.5.1
